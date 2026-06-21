@@ -1,0 +1,78 @@
+aid: tive
+name: Tive
+review:
+  question: Does Tive expose a documented public WebSocket API?
+  answer: false
+  date: '2026-06-21'
+  reviewer: API Evangelist
+  asyncapiSpecCreated: false
+  asyncapiScopeNote: |
+    Tive delivers realtime/event data via account-level HTTP webhooks (push),
+    not via a streaming transport. No HTTP Server-Sent Events (SSE) stream and
+    no WebSocket surface are documented, so no AsyncAPI document was authored.
+    The webhook surface is modeled as REST management endpoints in the OpenAPI
+    document (POST/GET/DELETE /webhooks).
+findings:
+  summary: |
+    Tive does not publish a documented public WebSocket API. The Tive Public
+    API (v3) is a Bearer-token-authenticated REST (HTTPS) API under
+    https://api.tive.com/public/v3. Realtime/event delivery is handled by
+    outbound HTTP webhooks: Tive POSTs to a customer-configured HTTPS endpoint
+    when a new device measurement is received or an alert triggers. Webhooks
+    are a server-to-client push over plain HTTP requests, not WebSocket and not
+    SSE. No realtime, bidirectional, or audio streaming WebSocket (ws:// or
+    wss://) endpoint is documented.
+  transports:
+    - protocol: REST
+      scheme: https
+      baseURL: https://api.tive.com/public/v3
+      documented: true
+    - protocol: Webhooks
+      scheme: https
+      note: Outbound HTTP POST callbacks to a customer endpoint on new device measurements or alerts. Push over discrete HTTP requests, not a persistent stream.
+      documented: true
+    - protocol: SSE
+      scheme: https
+      documented: false
+      note: No Server-Sent Events stream is documented for the Tive Public API.
+    - protocol: WebSocket
+      scheme: wss
+      documented: false
+      note: No WebSocket endpoint is documented in Tive's developer docs or API reference as of the review date.
+  endpointsConfirmedRest:
+    - POST   https://api.tive.com/public/v3/authenticate
+    - GET    https://api.tive.com/public/v3/shipments
+    - POST   https://api.tive.com/public/v3/shipments
+    - GET    https://api.tive.com/public/v3/shipments/{shipmentId}
+    - PUT    https://api.tive.com/public/v3/shipments/{shipmentId}
+    - PATCH  https://api.tive.com/public/v3/shipments/{shipmentId}/start
+    - GET    https://api.tive.com/public/v3/shipments/{shipmentId}/trackerData
+    - GET    https://api.tive.com/public/v3/devices
+    - GET    https://api.tive.com/public/v3/devices/{deviceId}
+    - GET    https://api.tive.com/public/v3/alertPresets
+    - POST   https://api.tive.com/public/v3/alertPresets
+    - GET    https://api.tive.com/public/v3/webhooks
+    - POST   https://api.tive.com/public/v3/webhooks
+    - GET    https://api.tive.com/public/v3/webhooks/{webhookId}
+    - DELETE https://api.tive.com/public/v3/webhooks/{webhookId}
+sources:
+  - url: https://developers.tive.com/docs/rest-api-overview
+    type: Documentation
+    note: States base URL https://api.tive.com/public/v3 and that all endpoints use HTTP request methods (POST/GET/PUT/PATCH/DELETE).
+  - url: https://developers.tive.com/docs/authentication
+    type: Documentation
+    note: Bearer-token auth via POST /authenticate (client_credentials); tokens last 1 hour; x-tive-account-id header required on most endpoints.
+  - url: https://developers.tive.com/docs/webhooks
+    type: Documentation
+    note: Realtime delivery is via outbound HTTP webhooks ('push'); recommends an HTTPS endpoint. No WebSocket or SSE described.
+  - url: https://developers.tive.com/docs/shipment-data
+    type: Documentation
+    note: Sensor data retrieved via GET shipment trackerData; pull-based REST, not streaming.
+actions:
+  asyncapiPath: null
+  apisYmlUpdated: true
+  reason: |
+    No WebSocket or SSE protocol surface exists. Tive's event delivery is
+    outbound HTTP webhooks, which are modeled as REST management endpoints in
+    the OpenAPI document. No AsyncAPI document was authored because there is no
+    streaming transport to model.

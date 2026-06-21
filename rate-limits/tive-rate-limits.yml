@@ -1,0 +1,63 @@
+specification: API Commons Rate Limits
+specificationVersion: '0.1'
+schema: https://raw.githubusercontent.com/api-evangelist/interface-research/main/schema/api-commons.yml#/$defs/RateLimits
+provider: Tive
+providerId: tive
+created: '2026-06-21'
+modified: '2026-06-21'
+reconciled: false
+tags:
+- Supply Chain
+- Shipment Visibility
+- Logistics
+- IoT
+- Trackers
+- Real Time
+- Rate Limiting
+- Quotas
+- Throttling
+description: >-
+  The Tive Public API (v3) is a Bearer-token-authenticated REST API. Tive's
+  developer documentation does not publish specific numeric rate limits for the
+  public API. Known operational constraints include short-lived bearer tokens
+  (1 hour / 3600 second lifetime, after which a 401 is returned and a new token
+  must be requested) and list pagination (e.g. the List Devices endpoint returns
+  up to 50 devices per request). Any per-account request-rate or throttling
+  thresholds are not documented and are not reconciled in this artifact.
+notes: >-
+  Confirm any RPS/RPM throttling thresholds and pagination caps with Tive during
+  reconciliation. Values below reflect documented behavior only; numeric request
+  ceilings were not published at the time of authoring.
+sources:
+- https://developers.tive.com/docs/authentication
+- https://developers.tive.com/docs/rest-api-overview
+- https://developers.tive.com/docs/devices
+responseCodes:
+  throttled: 429
+  unauthorized: 401
+limits:
+- name: Bearer Token Lifetime
+  scope: token
+  metric: seconds
+  limit: 3600
+  notes: Tokens expire after 1 hour; expired tokens return 401 and must be re-issued via POST /authenticate.
+- name: List Devices Page Size
+  scope: request
+  metric: items
+  limit: 50
+  notes: The List Devices endpoint returns up to 50 devices per request with pagination support.
+- name: Request Rate
+  scope: account
+  metric: requests
+  limit: see provider documentation
+  notes: No numeric per-account request-rate limit is published in Tive's developer documentation.
+policies:
+- name: Token Refresh
+  description: Re-authenticate via POST /authenticate when a token expires (401) to obtain a fresh bearer token.
+- name: Pagination
+  description: Page through list endpoints (e.g. devices) using the documented pagination support rather than assuming full result sets.
+- name: Backoff Strategy
+  description: Clients should implement exponential backoff with jitter and honor Retry-After on 429 responses if encountered.
+maintainers:
+- FN: Kin Lane
+  email: kin@apievangelist.com

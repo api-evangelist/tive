@@ -1,0 +1,127 @@
+aid: tive
+url: https://raw.githubusercontent.com/api-evangelist/tive/refs/heads/main/apis.yml
+name: Tive
+kind: company
+description: Tive is a real-time supply-chain and shipment visibility platform built
+  on cellular IoT trackers. The Tive Public API (v3) lets you programmatically create
+  and track shipments, manage trackers/devices, pull sensor data (location, temperature,
+  humidity, pressure, light, motion, battery), configure alert presets, and subscribe
+  to webhooks for push event delivery.
+image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
+tags:
+- Supply Chain
+- Shipment Visibility
+- Logistics
+- IoT
+- Trackers
+- Real Time
+created: '2026-06-21'
+modified: '2026-06-21'
+specificationVersion: '0.19'
+apis:
+- aid: tive:tive-shipments-api
+  name: Tive Shipments API
+  tags:
+  - Shipments
+  - Logistics
+  - Tracking
+  image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
+  humanURL: https://developers.tive.com/docs/create-a-shipment
+  baseURL: https://api.tive.com/public/v3
+  properties:
+  - url: https://developers.tive.com/docs/create-a-shipment
+    type: Documentation
+  - url: https://developers.tive.com/reference/overview
+    type: APIReference
+  - url: openapi/tive-openapi.yml
+    type: OpenAPI
+  description: Create, list, retrieve, update, start, and complete multi-leg shipments
+    (Road, Air, Ocean, Rail) and sync them with existing applications.
+- aid: tive:tive-trackers-devices-api
+  name: Tive Trackers / Devices API
+  tags:
+  - Devices
+  - Trackers
+  - IoT
+  image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
+  humanURL: https://developers.tive.com/docs/devices
+  baseURL: https://api.tive.com/public/v3
+  properties:
+  - url: https://developers.tive.com/docs/devices
+    type: Documentation
+  - url: https://developers.tive.com/reference/overview
+    type: APIReference
+  - url: openapi/tive-openapi.yml
+    type: OpenAPI
+  description: List and retrieve Tive trackers (devices) by deviceId (IMEI) or name,
+    including battery, GPS/WiFi state, and measurement/transmission interval settings.
+- aid: tive:tive-sensor-data-api
+  name: Tive Sensor Data API
+  tags:
+  - Sensor Data
+  - Telemetry
+  - Location
+  image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
+  humanURL: https://developers.tive.com/docs/shipment-data
+  baseURL: https://api.tive.com/public/v3
+  properties:
+  - url: https://developers.tive.com/docs/shipment-data
+    type: Documentation
+  - url: https://developers.tive.com/reference/overview
+    type: APIReference
+  - url: openapi/tive-openapi.yml
+    type: OpenAPI
+  description: Retrieve a shipment's tracker sensor data - location, temperature, humidity,
+    pressure, light, motion, and battery - optionally narrowed by a UTC start/end range.
+- aid: tive:tive-alerts-api
+  name: Tive Alerts API
+  tags:
+  - Alerts
+  - Alert Presets
+  - Monitoring
+  image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
+  humanURL: https://developers.tive.com/docs/alert-presets
+  baseURL: https://api.tive.com/public/v3
+  properties:
+  - url: https://developers.tive.com/docs/alert-presets
+    type: Documentation
+  - url: https://developers.tive.com/reference/overview
+    type: APIReference
+  - url: openapi/tive-openapi.yml
+    type: OpenAPI
+  description: Create, list, retrieve, and update alert presets - configurable triggers
+    (e.g. high temperature, light detection) attached to shipments and trackers.
+- aid: tive:tive-webhooks-api
+  name: Tive Webhooks API
+  tags:
+  - Webhooks
+  - Events
+  - Push
+  image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
+  humanURL: https://developers.tive.com/docs/webhooks
+  baseURL: https://api.tive.com/public/v3
+  properties:
+  - url: https://developers.tive.com/docs/webhooks
+    type: Documentation
+  - url: https://developers.tive.com/docs/creating-webhooks
+    type: Documentation
+  - url: openapi/tive-openapi.yml
+    type: OpenAPI
+  description: Manage account-level webhooks that push device measurement and alert
+    events to an HTTPS endpoint, scoped to all trackers, shipments, or alert presets.
+common:
+- type: LinkedIn
+  url: https://www.linkedin.com/company/tive-inc-
+- type: Website
+  url: https://www.tive.com
+- type: Documentation
+  url: https://developers.tive.com/docs
+- type: Plans
+  url: plans/tive-plans-pricing.yml
+- type: RateLimits
+  url: rate-limits/tive-rate-limits.yml
+- type: FinOps
+  url: finops/tive-finops.yml
+maintainers:
+- FN: Kin Lane
+  email: kin@apievangelist.com

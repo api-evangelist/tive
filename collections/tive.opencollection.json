@@ -1,0 +1,244 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Tive Public API",
+    "version": "3.0"
+  },
+  "request": {
+    "auth": {
+      "type": "bearer",
+      "token": "{{bearerToken}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Authentication",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Obtain a bearer token",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.tive.com/public/v3/authenticate"
+          },
+          "docs": "Obtain a bearer token"
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Shipments",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List shipments",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.tive.com/public/v3/shipments"
+          },
+          "docs": "List shipments"
+        },
+        {
+          "info": {
+            "name": "Create a shipment",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.tive.com/public/v3/shipments",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Create a shipment"
+        },
+        {
+          "info": {
+            "name": "Retrieve a shipment",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.tive.com/public/v3/shipments/:shipmentId"
+          },
+          "docs": "Retrieve a shipment"
+        },
+        {
+          "info": {
+            "name": "Update a shipment",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://api.tive.com/public/v3/shipments/:shipmentId",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Update a shipment"
+        },
+        {
+          "info": {
+            "name": "Start a shipment",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "https://api.tive.com/public/v3/shipments/:shipmentId/start"
+          },
+          "docs": "Start a shipment"
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Sensor Data",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get shipment tracker data",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.tive.com/public/v3/shipments/:shipmentId/trackerData"
+          },
+          "docs": "Get shipment tracker data"
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Devices",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List devices (trackers)",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.tive.com/public/v3/devices"
+          },
+          "docs": "List devices (trackers)"
+        },
+        {
+          "info": {
+            "name": "Retrieve a device (tracker)",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.tive.com/public/v3/devices/:deviceId"
+          },
+          "docs": "Retrieve a device (tracker)"
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Alerts",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List alert presets",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.tive.com/public/v3/alertPresets"
+          },
+          "docs": "List alert presets"
+        },
+        {
+          "info": {
+            "name": "Create an alert preset",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.tive.com/public/v3/alertPresets",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Create an alert preset"
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Webhooks",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List webhooks",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.tive.com/public/v3/webhooks"
+          },
+          "docs": "List webhooks"
+        },
+        {
+          "info": {
+            "name": "Create a webhook",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.tive.com/public/v3/webhooks",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Create a webhook"
+        },
+        {
+          "info": {
+            "name": "Retrieve a webhook",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.tive.com/public/v3/webhooks/:webhookId"
+          },
+          "docs": "Retrieve a webhook"
+        },
+        {
+          "info": {
+            "name": "Delete a webhook",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://api.tive.com/public/v3/webhooks/:webhookId"
+          },
+          "docs": "Delete a webhook"
+        }
+      ]
+    }
+  ]
+}

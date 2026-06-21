@@ -1,0 +1,576 @@
+{
+  "item": [
+    {
+      "id": "cad32a63-556a-4c8c-9aee-90d2b060679d",
+      "name": "Authentication",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "f0effdff-6775-4f2c-90ac-f6084bf72291",
+          "name": "Obtain a bearer token",
+          "request": {
+            "name": "Obtain a bearer token",
+            "description": {},
+            "url": {
+              "path": [
+                "public",
+                "v3",
+                "authenticate"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "multipart/form-data"
+              }
+            ],
+            "method": "POST"
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "id": "64ce25f8-f91d-400b-a57b-bff56fbb6aa6",
+      "name": "Shipments",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "b9610c9e-4745-4686-9479-abbff61053f8",
+          "name": "List shipments",
+          "request": {
+            "name": "List shipments",
+            "description": {},
+            "url": {
+              "path": [
+                "public",
+                "v3",
+                "shipments"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "x-tive-account-id",
+                "value": "{{accountId}}"
+              }
+            ],
+            "method": "GET"
+          },
+          "response": []
+        },
+        {
+          "id": "90d277ab-047a-474f-9fe7-19ad77608410",
+          "name": "Create a shipment",
+          "request": {
+            "name": "Create a shipment",
+            "description": {},
+            "url": {
+              "path": [
+                "public",
+                "v3",
+                "shipments"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "x-tive-account-id",
+                "value": "{{accountId}}"
+              }
+            ],
+            "method": "POST",
+            "body": {
+              "mode": "raw",
+              "raw": "{}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": []
+        },
+        {
+          "id": "37478885-9b33-48d2-b8ef-ac2d4022e698",
+          "name": "Retrieve a shipment",
+          "request": {
+            "name": "Retrieve a shipment",
+            "description": {},
+            "url": {
+              "path": [
+                "public",
+                "v3",
+                "shipments",
+                ":shipmentId"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "x-tive-account-id",
+                "value": "{{accountId}}"
+              }
+            ],
+            "method": "GET"
+          },
+          "response": []
+        },
+        {
+          "id": "fb0296d0-6ce2-4665-9713-6cf74f42771c",
+          "name": "Update a shipment",
+          "request": {
+            "name": "Update a shipment",
+            "description": {},
+            "url": {
+              "path": [
+                "public",
+                "v3",
+                "shipments",
+                ":shipmentId"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "x-tive-account-id",
+                "value": "{{accountId}}"
+              }
+            ],
+            "method": "PUT",
+            "body": {
+              "mode": "raw",
+              "raw": "{}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": []
+        },
+        {
+          "id": "3531be21-cbd2-404b-905b-0cbbb1e40d01",
+          "name": "Start a shipment",
+          "request": {
+            "name": "Start a shipment",
+            "description": {},
+            "url": {
+              "path": [
+                "public",
+                "v3",
+                "shipments",
+                ":shipmentId",
+                "start"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "x-tive-account-id",
+                "value": "{{accountId}}"
+              }
+            ],
+            "method": "PATCH"
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "id": "083e8471-0189-4b49-948d-c331321a8b78",
+      "name": "Sensor Data",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "48772130-2568-4a2a-8938-2f2da5d4f9d7",
+          "name": "Get shipment tracker data",
+          "request": {
+            "name": "Get shipment tracker data",
+            "description": {},
+            "url": {
+              "path": [
+                "public",
+                "v3",
+                "shipments",
+                ":shipmentId",
+                "trackerData"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "x-tive-account-id",
+                "value": "{{accountId}}"
+              }
+            ],
+            "method": "GET"
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "id": "0a95e1af-a031-434e-84c2-e42bae5a0917",
+      "name": "Devices",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "3378fab0-ab65-4da0-bba7-530fdf5cf40b",
+          "name": "List devices (trackers)",
+          "request": {
+            "name": "List devices (trackers)",
+            "description": {},
+            "url": {
+              "path": [
+                "public",
+                "v3",
+                "devices"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "x-tive-account-id",
+                "value": "{{accountId}}"
+              }
+            ],
+            "method": "GET"
+          },
+          "response": []
+        },
+        {
+          "id": "aa01c1be-64bf-48cf-a9c4-e8edccb8dd31",
+          "name": "Retrieve a device (tracker)",
+          "request": {
+            "name": "Retrieve a device (tracker)",
+            "description": {},
+            "url": {
+              "path": [
+                "public",
+                "v3",
+                "devices",
+                ":deviceId"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "x-tive-account-id",
+                "value": "{{accountId}}"
+              }
+            ],
+            "method": "GET"
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "id": "f8f068c9-49f7-4a4e-ae97-f763d2b59253",
+      "name": "Alerts",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "1b9fccfc-6839-4739-94ae-add09fbbcdeb",
+          "name": "List alert presets",
+          "request": {
+            "name": "List alert presets",
+            "description": {},
+            "url": {
+              "path": [
+                "public",
+                "v3",
+                "alertPresets"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "x-tive-account-id",
+                "value": "{{accountId}}"
+              }
+            ],
+            "method": "GET"
+          },
+          "response": []
+        },
+        {
+          "id": "f45c2d95-1998-43da-a84d-3f378a8a8f63",
+          "name": "Create an alert preset",
+          "request": {
+            "name": "Create an alert preset",
+            "description": {},
+            "url": {
+              "path": [
+                "public",
+                "v3",
+                "alertPresets"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "x-tive-account-id",
+                "value": "{{accountId}}"
+              }
+            ],
+            "method": "POST",
+            "body": {
+              "mode": "raw",
+              "raw": "{}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "id": "9c740255-44bd-47f4-8924-ce6f9b4f044d",
+      "name": "Webhooks",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "f4c2da80-4e25-42e5-aa12-d93ee585646b",
+          "name": "List webhooks",
+          "request": {
+            "name": "List webhooks",
+            "description": {},
+            "url": {
+              "path": [
+                "public",
+                "v3",
+                "webhooks"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "x-tive-account-id",
+                "value": "{{accountId}}"
+              }
+            ],
+            "method": "GET"
+          },
+          "response": []
+        },
+        {
+          "id": "93e8c9ef-d626-47cc-8c47-911bea4dbb6f",
+          "name": "Create a webhook",
+          "request": {
+            "name": "Create a webhook",
+            "description": {},
+            "url": {
+              "path": [
+                "public",
+                "v3",
+                "webhooks"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "x-tive-account-id",
+                "value": "{{accountId}}"
+              }
+            ],
+            "method": "POST",
+            "body": {
+              "mode": "raw",
+              "raw": "{}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": []
+        },
+        {
+          "id": "a0b34dd4-e057-4372-9c5f-e6fe85610a73",
+          "name": "Retrieve a webhook",
+          "request": {
+            "name": "Retrieve a webhook",
+            "description": {},
+            "url": {
+              "path": [
+                "public",
+                "v3",
+                "webhooks",
+                ":webhookId"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "x-tive-account-id",
+                "value": "{{accountId}}"
+              }
+            ],
+            "method": "GET"
+          },
+          "response": []
+        },
+        {
+          "id": "64f0f030-0441-4fb8-8ba4-2112e372f2d3",
+          "name": "Delete a webhook",
+          "request": {
+            "name": "Delete a webhook",
+            "description": {},
+            "url": {
+              "path": [
+                "public",
+                "v3",
+                "webhooks",
+                ":webhookId"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "x-tive-account-id",
+                "value": "{{accountId}}"
+              }
+            ],
+            "method": "DELETE"
+          },
+          "response": []
+        }
+      ]
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.tive.com",
+      "key": "baseUrl"
+    },
+    {
+      "type": "string",
+      "value": "YOUR_ACCOUNT_ID",
+      "key": "accountId"
+    }
+  ],
+  "auth": {
+    "type": "bearer",
+    "bearer": [
+      {
+        "key": "token",
+        "value": "{{bearerToken}}"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "e44ef5f7-bfd0-44c9-94ef-0e03e0178494",
+    "name": "Tive Public API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "Specification of the Tive Public API (v3).\n\nContact Support:\n Name: Tive Support\n URL: https://support.tive.com",
+      "type": "text/plain"
+    }
+  }
+}

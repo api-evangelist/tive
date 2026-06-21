@@ -1,0 +1,543 @@
+openapi: 3.0.1
+info:
+  title: Tive Public API
+  description: >-
+    Specification of the Tive Public API (v3) for real-time supply-chain and
+    shipment visibility. The API lets you create and track shipments, manage
+    trackers (devices), retrieve sensor data (location, temperature, humidity,
+    pressure, light, motion, battery), configure alert presets, and manage
+    webhooks. This document models documented, real endpoints; it is intentionally
+    a small-but-real subset and avoids fabricating undocumented surface area.
+  termsOfService: https://www.tive.com/terms
+  contact:
+    name: Tive Support
+    url: https://support.tive.com
+  version: '3.0'
+servers:
+  - url: https://api.tive.com/public/v3
+    description: Tive Public API v3 (production)
+security:
+  - bearerAuth: []
+paths:
+  /authenticate:
+    post:
+      operationId: authenticate
+      tags:
+        - Authentication
+      summary: Obtain a bearer token
+      description: >-
+        Exchange client credentials for a short-lived bearer token. Tokens
+        currently have a lifetime of one hour (3600 seconds).
+      security: []
+      requestBody:
+        required: true
+        content:
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/AuthenticateRequest'
+      responses:
+        '200':
+          description: A bearer token.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AuthenticateResponse'
+        '401':
+          description: Invalid credentials.
+  /shipments:
+    get:
+      operationId: listShipments
+      tags:
+        - Shipments
+      summary: List shipments
+      parameters:
+        - $ref: '#/components/parameters/AccountIdHeader'
+      responses:
+        '200':
+          description: A list of shipments.
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Shipment'
+    post:
+      operationId: createShipment
+      tags:
+        - Shipments
+      summary: Create a shipment
+      parameters:
+        - $ref: '#/components/parameters/AccountIdHeader'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Shipment'
+      responses:
+        '200':
+          description: The created shipment.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Shipment'
+  /shipments/{shipmentId}:
+    get:
+      operationId: getShipment
+      tags:
+        - Shipments
+      summary: Retrieve a shipment
+      parameters:
+        - $ref: '#/components/parameters/AccountIdHeader'
+        - $ref: '#/components/parameters/ShipmentIdPath'
+      responses:
+        '200':
+          description: A shipment.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Shipment'
+    put:
+      operationId: updateShipment
+      tags:
+        - Shipments
+      summary: Update a shipment
+      parameters:
+        - $ref: '#/components/parameters/AccountIdHeader'
+        - $ref: '#/components/parameters/ShipmentIdPath'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Shipment'
+      responses:
+        '200':
+          description: The updated shipment.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Shipment'
+  /shipments/{shipmentId}/start:
+    patch:
+      operationId: startShipment
+      tags:
+        - Shipments
+      summary: Start a shipment
+      parameters:
+        - $ref: '#/components/parameters/AccountIdHeader'
+        - $ref: '#/components/parameters/ShipmentIdPath'
+      responses:
+        '200':
+          description: The started shipment.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Shipment'
+  /shipments/{shipmentId}/trackerData:
+    get:
+      operationId: getShipmentTrackerData
+      tags:
+        - Sensor Data
+      summary: Get shipment tracker data
+      description: >-
+        Returns the shipment's tracker sensor data - location, temperature,
+        humidity, pressure, light, motion, and battery. Optionally narrow the
+        result with a UTC start and end date range; if omitted, the full
+        shipment duration is returned.
+      parameters:
+        - $ref: '#/components/parameters/AccountIdHeader'
+        - $ref: '#/components/parameters/ShipmentIdPath'
+        - name: startDate
+          in: query
+          required: false
+          schema:
+            type: string
+            format: date-time
+          description: UTC start of the sensor data range.
+        - name: endDate
+          in: query
+          required: false
+          schema:
+            type: string
+            format: date-time
+          description: UTC end of the sensor data range.
+      responses:
+        '200':
+          description: Sensor data readings.
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/SensorReading'
+  /devices:
+    get:
+      operationId: listDevices
+      tags:
+        - Devices
+      summary: List devices (trackers)
+      description: Returns up to 50 devices per request with pagination support.
+      parameters:
+        - $ref: '#/components/parameters/AccountIdHeader'
+      responses:
+        '200':
+          description: A list of devices.
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Device'
+  /devices/{deviceId}:
+    get:
+      operationId: getDevice
+      tags:
+        - Devices
+      summary: Retrieve a device (tracker)
+      description: >-
+        Retrieve a single device by its 15-digit deviceId (IMEI) or by device
+        name.
+      parameters:
+        - $ref: '#/components/parameters/AccountIdHeader'
+        - name: deviceId
+          in: path
+          required: true
+          schema:
+            type: string
+          description: The 15-digit device identifier (IMEI) or device name.
+      responses:
+        '200':
+          description: A device.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Device'
+  /alertPresets:
+    get:
+      operationId: listAlertPresets
+      tags:
+        - Alerts
+      summary: List alert presets
+      parameters:
+        - $ref: '#/components/parameters/AccountIdHeader'
+      responses:
+        '200':
+          description: A list of alert presets.
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/AlertPreset'
+    post:
+      operationId: createAlertPreset
+      tags:
+        - Alerts
+      summary: Create an alert preset
+      parameters:
+        - $ref: '#/components/parameters/AccountIdHeader'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/AlertPreset'
+      responses:
+        '200':
+          description: The created alert preset.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AlertPreset'
+  /webhooks:
+    get:
+      operationId: listWebhooks
+      tags:
+        - Webhooks
+      summary: List webhooks
+      parameters:
+        - $ref: '#/components/parameters/AccountIdHeader'
+      responses:
+        '200':
+          description: A list of webhooks.
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Webhook'
+    post:
+      operationId: createWebhook
+      tags:
+        - Webhooks
+      summary: Create a webhook
+      description: >-
+        At least one of applyToAllTrackers, applyToAllShipments, or
+        applyToAllAlertPresets must be set to true.
+      parameters:
+        - $ref: '#/components/parameters/AccountIdHeader'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Webhook'
+      responses:
+        '200':
+          description: The created webhook.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Webhook'
+  /webhooks/{webhookId}:
+    get:
+      operationId: getWebhook
+      tags:
+        - Webhooks
+      summary: Retrieve a webhook
+      parameters:
+        - $ref: '#/components/parameters/AccountIdHeader'
+        - name: webhookId
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: A webhook.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Webhook'
+    delete:
+      operationId: deleteWebhook
+      tags:
+        - Webhooks
+      summary: Delete a webhook
+      parameters:
+        - $ref: '#/components/parameters/AccountIdHeader'
+        - name: webhookId
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        '204':
+          description: The webhook was deleted.
+components:
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer
+      description: >-
+        Bearer token obtained from POST /authenticate. Send it as
+        'Authorization: Bearer <token>'. Most endpoints additionally require
+        the x-tive-account-id header.
+  parameters:
+    AccountIdHeader:
+      name: x-tive-account-id
+      in: header
+      required: true
+      schema:
+        type: string
+      description: The Tive account ID. Required by most non-authentication endpoints.
+    ShipmentIdPath:
+      name: shipmentId
+      in: path
+      required: true
+      schema:
+        type: string
+      description: The public shipment identifier.
+  schemas:
+    AuthenticateRequest:
+      type: object
+      required:
+        - client_id
+        - client_secret
+        - grant_type
+      properties:
+        client_id:
+          type: string
+          description: Your application's public identifier.
+        client_secret:
+          type: string
+          description: Your confidential application secret.
+        grant_type:
+          type: string
+          enum:
+            - client_credentials
+    AuthenticateResponse:
+      type: object
+      properties:
+        token:
+          type: string
+          description: The bearer token to use on subsequent requests.
+        token_type:
+          type: string
+          example: Bearer
+        expires:
+          type: integer
+          description: Token lifetime in seconds (currently 3600).
+    Shipment:
+      type: object
+      properties:
+        shipmentId:
+          type: string
+          description: A unique identifier for the shipment.
+        publicShipmentId:
+          type: string
+          description: The public shipment identifier used in shipment sub-resources.
+        name:
+          type: string
+        status:
+          type: string
+        devices:
+          type: array
+          description: Array of device IDs assigned to the shipment.
+          items:
+            type: string
+        shipmentLegs:
+          type: array
+          items:
+            $ref: '#/components/schemas/ShipmentLeg'
+        alertPresetIds:
+          type: array
+          items:
+            type: string
+    ShipmentLeg:
+      type: object
+      properties:
+        mode:
+          type: string
+          enum:
+            - Road
+            - Air
+            - Ocean
+            - Rail
+        fromAddress:
+          type: string
+        toAddress:
+          type: string
+        fromLocationId:
+          type: string
+        toLocationId:
+          type: string
+        fromCoordinates:
+          $ref: '#/components/schemas/Coordinates'
+        toCoordinates:
+          $ref: '#/components/schemas/Coordinates'
+        shipFromDate:
+          type: string
+          format: date-time
+    Coordinates:
+      type: object
+      properties:
+        latitude:
+          type: number
+          format: double
+        longitude:
+          type: number
+          format: double
+    Device:
+      type: object
+      properties:
+        deviceId:
+          type: string
+          description: 15-digit unique identifier matching the device IMEI.
+        deviceName:
+          type: string
+        accountId:
+          type: string
+        deviceOwner:
+          type: string
+        batteryPercent:
+          type: number
+        description:
+          type: string
+        powerButtonEnabled:
+          type: boolean
+        gpsEnabled:
+          type: boolean
+        wifiEnabled:
+          type: boolean
+        measurementInterval:
+          type: integer
+          description: Data capture frequency in minutes.
+        transmissionInterval:
+          type: integer
+          description: Data transmission frequency in minutes.
+        estimatedBatteryLifeMinutes:
+          type: integer
+        alertPresetIds:
+          type: array
+          items:
+            type: string
+    SensorReading:
+      type: object
+      properties:
+        timestamp:
+          type: string
+          format: date-time
+        location:
+          $ref: '#/components/schemas/Coordinates'
+        temperature:
+          type: number
+        humidity:
+          type: number
+        pressure:
+          type: number
+        light:
+          type: number
+        motion:
+          type: number
+        battery:
+          type: number
+    AlertPreset:
+      type: object
+      properties:
+        alertPresetId:
+          type: string
+        name:
+          type: string
+        triggers:
+          type: array
+          items:
+            $ref: '#/components/schemas/AlertTrigger'
+    AlertTrigger:
+      type: object
+      properties:
+        type:
+          type: string
+          description: Trigger type, e.g. high temperature or light detected.
+        threshold:
+          type: number
+        notify:
+          type: boolean
+          description: Whether the trigger should send notifications.
+    Webhook:
+      type: object
+      properties:
+        webhookId:
+          type: string
+        url:
+          type: string
+          description: The HTTPS endpoint that receives webhook payloads.
+        httpMethod:
+          type: string
+          example: POST
+        contentType:
+          type: string
+          example: application/json
+        enabled:
+          type: boolean
+        applyToAllTrackers:
+          type: boolean
+        applyToAllShipments:
+          type: boolean
+        applyToAllAlertPresets:
+          type: boolean
+        accountIds:
+          type: array
+          items:
+            type: string

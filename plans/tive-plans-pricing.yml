@@ -1,0 +1,80 @@
+specification: API Commons Plans
+specificationVersion: '0.1'
+schema: https://raw.githubusercontent.com/api-evangelist/interface-research/main/schema/api-commons.yml#/$defs/Plans
+provider: Tive
+providerId: tive
+created: '2026-06-21'
+modified: '2026-06-21'
+reconciled: false
+tags:
+- Supply Chain
+- Shipment Visibility
+- Logistics
+- IoT
+- Trackers
+- Real Time
+- Plans
+description: >-
+  Tive is sold as an enterprise, sales-led solution combining cellular IoT
+  trackers (hardware), a real-time visibility platform (software), and managed
+  monitoring services. Pricing is not published as public, self-serve tiers;
+  customers contact Tive sales for quotes that depend on tracker volume,
+  shipment lanes, reusable vs. single-use devices, monitoring service level,
+  and platform/API access. The Public API is provided as part of a platform
+  subscription rather than as a separately metered product. Specific list
+  prices and packaging are not reconciled in this artifact.
+notes: >-
+  No public pricing page with discrete tiers was found at the time of
+  authoring; all amounts and packaging require confirmation with Tive sales
+  during reconciliation.
+sources:
+- https://www.tive.com
+- https://developers.tive.com/docs
+plans:
+- id: tive-enterprise
+  name: Enterprise (Sales-Led)
+  type: enterprise
+  description: >-
+    Negotiated agreement covering Tive trackers (Solo 5G and other devices),
+    platform/API access, and optional 24/7 managed monitoring services. Pricing
+    depends on device volume, lanes, monitoring level, and contract term.
+  entries:
+  - label: Platform and API Subscription
+    name: platform_subscription
+    type: flat
+    metric: contract
+    limit: -1
+    timeFrame: year
+    geo: global
+    unit: 1
+    price: contact sales
+    userMultiplied: false
+  - label: Trackers / Devices
+    name: trackers
+    type: usage
+    metric: devices
+    limit: -1
+    timeFrame: usage
+    geo: global
+    unit: 1
+    price: contact sales (varies by reusable vs. single-use and volume)
+    userMultiplied: false
+  - label: Managed Monitoring Service
+    name: monitoring_service
+    type: flat
+    metric: contract
+    limit: -1
+    timeFrame: year
+    geo: global
+    unit: 1
+    price: contact sales
+    userMultiplied: false
+  elements:
+  - name: Real-Time Shipment Visibility Platform
+  - name: Public API (v3) Access
+  - name: Webhooks
+  - name: Cellular IoT Trackers
+  - name: 24/7 Monitoring Services
+maintainers:
+- FN: Kin Lane
+  email: kin@apievangelist.com
