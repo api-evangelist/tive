@@ -1,0 +1,14 @@
+generated: '2026-07-11'
+method: derived
+source: openapi/tive-openapi.yml
+summary:
+  types:
+  - http
+schemes:
+- name: bearerAuth
+  type: http
+  scheme: bearer
+  description: 'Bearer token obtained from POST /authenticate. Send it as ''Authorization: Bearer
+    <token>''. Most endpoints additionally require the x-tive-account-id header.'
+  sources:
+  - openapi/tive-openapi.yml

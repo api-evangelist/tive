@@ -110,6 +110,10 @@ apis:
   description: Manage account-level webhooks that push device measurement and alert
     events to an HTTPS endpoint, scoped to all trackers, shipments, or alert presets.
 common:
+- type: DomainSecurity
+  url: security/tive-domain-security.yml
+- type: Authentication
+  url: authentication/tive-authentication.yml
 - type: LinkedIn
   url: https://www.linkedin.com/company/tive-inc-
 - type: Website
@@ -122,6 +126,8 @@ common:
   url: rate-limits/tive-rate-limits.yml
 - type: FinOps
   url: finops/tive-finops.yml
+- type: Blog
+  url: https://www.tive.com/blog
 maintainers:
 - FN: Kin Lane
   email: kin@apievangelist.com
