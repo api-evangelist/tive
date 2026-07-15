@@ -110,6 +110,8 @@ apis:
   description: Manage account-level webhooks that push device measurement and alert
     events to an HTTPS endpoint, scoped to all trackers, shipments, or alert presets.
 common:
+- type: AgenticAccess
+  url: agentic-access/tive-agentic-access.yml
 - type: DomainSecurity
   url: security/tive-domain-security.yml
 - type: Authentication
