@@ -1,0 +1,131 @@
+openapi: 3.0.1
+info:
+  title: Tive Public Alerts Webhooks API
+  description: Specification of the Tive Public API (v3) for real-time supply-chain and shipment visibility. The API lets you create and track shipments, manage trackers (devices), retrieve sensor data (location, temperature, humidity, pressure, light, motion, battery), configure alert presets, and manage webhooks. This document models documented, real endpoints; it is intentionally a small-but-real subset and avoids fabricating undocumented surface area.
+  termsOfService: https://www.tive.com/terms
+  contact:
+    name: Tive Support
+    url: https://support.tive.com
+  version: '3.0'
+servers:
+- url: https://api.tive.com/public/v3
+  description: Tive Public API v3 (production)
+security:
+- bearerAuth: []
+tags:
+- name: Webhooks
+paths:
+  /webhooks:
+    get:
+      operationId: listWebhooks
+      tags:
+      - Webhooks
+      summary: List webhooks
+      parameters:
+      - $ref: '#/components/parameters/AccountIdHeader'
+      responses:
+        '200':
+          description: A list of webhooks.
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Webhook'
+    post:
+      operationId: createWebhook
+      tags:
+      - Webhooks
+      summary: Create a webhook
+      description: At least one of applyToAllTrackers, applyToAllShipments, or applyToAllAlertPresets must be set to true.
+      parameters:
+      - $ref: '#/components/parameters/AccountIdHeader'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Webhook'
+      responses:
+        '200':
+          description: The created webhook.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Webhook'
+  /webhooks/{webhookId}:
+    get:
+      operationId: getWebhook
+      tags:
+      - Webhooks
+      summary: Retrieve a webhook
+      parameters:
+      - $ref: '#/components/parameters/AccountIdHeader'
+      - name: webhookId
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: A webhook.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Webhook'
+    delete:
+      operationId: deleteWebhook
+      tags:
+      - Webhooks
+      summary: Delete a webhook
+      parameters:
+      - $ref: '#/components/parameters/AccountIdHeader'
+      - name: webhookId
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '204':
+          description: The webhook was deleted.
+components:
+  parameters:
+    AccountIdHeader:
+      name: x-tive-account-id
+      in: header
+      required: true
+      schema:
+        type: string
+      description: The Tive account ID. Required by most non-authentication endpoints.
+  schemas:
+    Webhook:
+      type: object
+      properties:
+        webhookId:
+          type: string
+        url:
+          type: string
+          description: The HTTPS endpoint that receives webhook payloads.
+        httpMethod:
+          type: string
+          example: POST
+        contentType:
+          type: string
+          example: application/json
+        enabled:
+          type: boolean
+        applyToAllTrackers:
+          type: boolean
+        applyToAllShipments:
+          type: boolean
+        applyToAllAlertPresets:
+          type: boolean
+        accountIds:
+          type: array
+          items:
+            type: string
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer
+      description: 'Bearer token obtained from POST /authenticate. Send it as ''Authorization: Bearer <token>''. Most endpoints additionally require the x-tive-account-id header.'

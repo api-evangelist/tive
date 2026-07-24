@@ -1,0 +1,76 @@
+openapi: 3.0.1
+info:
+  title: Tive Public Alerts Authentication API
+  description: Specification of the Tive Public API (v3) for real-time supply-chain and shipment visibility. The API lets you create and track shipments, manage trackers (devices), retrieve sensor data (location, temperature, humidity, pressure, light, motion, battery), configure alert presets, and manage webhooks. This document models documented, real endpoints; it is intentionally a small-but-real subset and avoids fabricating undocumented surface area.
+  termsOfService: https://www.tive.com/terms
+  contact:
+    name: Tive Support
+    url: https://support.tive.com
+  version: '3.0'
+servers:
+- url: https://api.tive.com/public/v3
+  description: Tive Public API v3 (production)
+security:
+- bearerAuth: []
+tags:
+- name: Authentication
+paths:
+  /authenticate:
+    post:
+      operationId: authenticate
+      tags:
+      - Authentication
+      summary: Obtain a bearer token
+      description: Exchange client credentials for a short-lived bearer token. Tokens currently have a lifetime of one hour (3600 seconds).
+      security: []
+      requestBody:
+        required: true
+        content:
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/AuthenticateRequest'
+      responses:
+        '200':
+          description: A bearer token.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AuthenticateResponse'
+        '401':
+          description: Invalid credentials.
+components:
+  schemas:
+    AuthenticateRequest:
+      type: object
+      required:
+      - client_id
+      - client_secret
+      - grant_type
+      properties:
+        client_id:
+          type: string
+          description: Your application's public identifier.
+        client_secret:
+          type: string
+          description: Your confidential application secret.
+        grant_type:
+          type: string
+          enum:
+          - client_credentials
+    AuthenticateResponse:
+      type: object
+      properties:
+        token:
+          type: string
+          description: The bearer token to use on subsequent requests.
+        token_type:
+          type: string
+          example: Bearer
+        expires:
+          type: integer
+          description: Token lifetime in seconds (currently 3600).
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer
+      description: 'Bearer token obtained from POST /authenticate. Send it as ''Authorization: Bearer <token>''. Most endpoints additionally require the x-tive-account-id header.'

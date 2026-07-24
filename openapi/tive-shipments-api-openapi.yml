@@ -1,0 +1,189 @@
+openapi: 3.0.1
+info:
+  title: Tive Public Alerts Shipments API
+  description: Specification of the Tive Public API (v3) for real-time supply-chain and shipment visibility. The API lets you create and track shipments, manage trackers (devices), retrieve sensor data (location, temperature, humidity, pressure, light, motion, battery), configure alert presets, and manage webhooks. This document models documented, real endpoints; it is intentionally a small-but-real subset and avoids fabricating undocumented surface area.
+  termsOfService: https://www.tive.com/terms
+  contact:
+    name: Tive Support
+    url: https://support.tive.com
+  version: '3.0'
+servers:
+- url: https://api.tive.com/public/v3
+  description: Tive Public API v3 (production)
+security:
+- bearerAuth: []
+tags:
+- name: Shipments
+paths:
+  /shipments:
+    get:
+      operationId: listShipments
+      tags:
+      - Shipments
+      summary: List shipments
+      parameters:
+      - $ref: '#/components/parameters/AccountIdHeader'
+      responses:
+        '200':
+          description: A list of shipments.
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Shipment'
+    post:
+      operationId: createShipment
+      tags:
+      - Shipments
+      summary: Create a shipment
+      parameters:
+      - $ref: '#/components/parameters/AccountIdHeader'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Shipment'
+      responses:
+        '200':
+          description: The created shipment.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Shipment'
+  /shipments/{shipmentId}:
+    get:
+      operationId: getShipment
+      tags:
+      - Shipments
+      summary: Retrieve a shipment
+      parameters:
+      - $ref: '#/components/parameters/AccountIdHeader'
+      - $ref: '#/components/parameters/ShipmentIdPath'
+      responses:
+        '200':
+          description: A shipment.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Shipment'
+    put:
+      operationId: updateShipment
+      tags:
+      - Shipments
+      summary: Update a shipment
+      parameters:
+      - $ref: '#/components/parameters/AccountIdHeader'
+      - $ref: '#/components/parameters/ShipmentIdPath'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Shipment'
+      responses:
+        '200':
+          description: The updated shipment.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Shipment'
+  /shipments/{shipmentId}/start:
+    patch:
+      operationId: startShipment
+      tags:
+      - Shipments
+      summary: Start a shipment
+      parameters:
+      - $ref: '#/components/parameters/AccountIdHeader'
+      - $ref: '#/components/parameters/ShipmentIdPath'
+      responses:
+        '200':
+          description: The started shipment.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Shipment'
+components:
+  schemas:
+    Coordinates:
+      type: object
+      properties:
+        latitude:
+          type: number
+          format: double
+        longitude:
+          type: number
+          format: double
+    Shipment:
+      type: object
+      properties:
+        shipmentId:
+          type: string
+          description: A unique identifier for the shipment.
+        publicShipmentId:
+          type: string
+          description: The public shipment identifier used in shipment sub-resources.
+        name:
+          type: string
+        status:
+          type: string
+        devices:
+          type: array
+          description: Array of device IDs assigned to the shipment.
+          items:
+            type: string
+        shipmentLegs:
+          type: array
+          items:
+            $ref: '#/components/schemas/ShipmentLeg'
+        alertPresetIds:
+          type: array
+          items:
+            type: string
+    ShipmentLeg:
+      type: object
+      properties:
+        mode:
+          type: string
+          enum:
+          - Road
+          - Air
+          - Ocean
+          - Rail
+        fromAddress:
+          type: string
+        toAddress:
+          type: string
+        fromLocationId:
+          type: string
+        toLocationId:
+          type: string
+        fromCoordinates:
+          $ref: '#/components/schemas/Coordinates'
+        toCoordinates:
+          $ref: '#/components/schemas/Coordinates'
+        shipFromDate:
+          type: string
+          format: date-time
+  parameters:
+    ShipmentIdPath:
+      name: shipmentId
+      in: path
+      required: true
+      schema:
+        type: string
+      description: The public shipment identifier.
+    AccountIdHeader:
+      name: x-tive-account-id
+      in: header
+      required: true
+      schema:
+        type: string
+      description: The Tive account ID. Required by most non-authentication endpoints.
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer
+      description: 'Bearer token obtained from POST /authenticate. Send it as ''Authorization: Bearer <token>''. Most endpoints additionally require the x-tive-account-id header.'

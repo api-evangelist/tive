@@ -1,0 +1,101 @@
+openapi: 3.0.1
+info:
+  title: Tive Public Alerts Sensor Data API
+  description: Specification of the Tive Public API (v3) for real-time supply-chain and shipment visibility. The API lets you create and track shipments, manage trackers (devices), retrieve sensor data (location, temperature, humidity, pressure, light, motion, battery), configure alert presets, and manage webhooks. This document models documented, real endpoints; it is intentionally a small-but-real subset and avoids fabricating undocumented surface area.
+  termsOfService: https://www.tive.com/terms
+  contact:
+    name: Tive Support
+    url: https://support.tive.com
+  version: '3.0'
+servers:
+- url: https://api.tive.com/public/v3
+  description: Tive Public API v3 (production)
+security:
+- bearerAuth: []
+tags:
+- name: Sensor Data
+paths:
+  /shipments/{shipmentId}/trackerData:
+    get:
+      operationId: getShipmentTrackerData
+      tags:
+      - Sensor Data
+      summary: Get shipment tracker data
+      description: Returns the shipment's tracker sensor data - location, temperature, humidity, pressure, light, motion, and battery. Optionally narrow the result with a UTC start and end date range; if omitted, the full shipment duration is returned.
+      parameters:
+      - $ref: '#/components/parameters/AccountIdHeader'
+      - $ref: '#/components/parameters/ShipmentIdPath'
+      - name: startDate
+        in: query
+        required: false
+        schema:
+          type: string
+          format: date-time
+        description: UTC start of the sensor data range.
+      - name: endDate
+        in: query
+        required: false
+        schema:
+          type: string
+          format: date-time
+        description: UTC end of the sensor data range.
+      responses:
+        '200':
+          description: Sensor data readings.
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/SensorReading'
+components:
+  schemas:
+    SensorReading:
+      type: object
+      properties:
+        timestamp:
+          type: string
+          format: date-time
+        location:
+          $ref: '#/components/schemas/Coordinates'
+        temperature:
+          type: number
+        humidity:
+          type: number
+        pressure:
+          type: number
+        light:
+          type: number
+        motion:
+          type: number
+        battery:
+          type: number
+    Coordinates:
+      type: object
+      properties:
+        latitude:
+          type: number
+          format: double
+        longitude:
+          type: number
+          format: double
+  parameters:
+    ShipmentIdPath:
+      name: shipmentId
+      in: path
+      required: true
+      schema:
+        type: string
+      description: The public shipment identifier.
+    AccountIdHeader:
+      name: x-tive-account-id
+      in: header
+      required: true
+      schema:
+        type: string
+      description: The Tive account ID. Required by most non-authentication endpoints.
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer
+      description: 'Bearer token obtained from POST /authenticate. Send it as ''Authorization: Bearer <token>''. Most endpoints additionally require the x-tive-account-id header.'

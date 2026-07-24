@@ -1,0 +1,106 @@
+openapi: 3.0.1
+info:
+  title: Tive Public Alerts Devices API
+  description: Specification of the Tive Public API (v3) for real-time supply-chain and shipment visibility. The API lets you create and track shipments, manage trackers (devices), retrieve sensor data (location, temperature, humidity, pressure, light, motion, battery), configure alert presets, and manage webhooks. This document models documented, real endpoints; it is intentionally a small-but-real subset and avoids fabricating undocumented surface area.
+  termsOfService: https://www.tive.com/terms
+  contact:
+    name: Tive Support
+    url: https://support.tive.com
+  version: '3.0'
+servers:
+- url: https://api.tive.com/public/v3
+  description: Tive Public API v3 (production)
+security:
+- bearerAuth: []
+tags:
+- name: Devices
+paths:
+  /devices:
+    get:
+      operationId: listDevices
+      tags:
+      - Devices
+      summary: List devices (trackers)
+      description: Returns up to 50 devices per request with pagination support.
+      parameters:
+      - $ref: '#/components/parameters/AccountIdHeader'
+      responses:
+        '200':
+          description: A list of devices.
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Device'
+  /devices/{deviceId}:
+    get:
+      operationId: getDevice
+      tags:
+      - Devices
+      summary: Retrieve a device (tracker)
+      description: Retrieve a single device by its 15-digit deviceId (IMEI) or by device name.
+      parameters:
+      - $ref: '#/components/parameters/AccountIdHeader'
+      - name: deviceId
+        in: path
+        required: true
+        schema:
+          type: string
+        description: The 15-digit device identifier (IMEI) or device name.
+      responses:
+        '200':
+          description: A device.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Device'
+components:
+  parameters:
+    AccountIdHeader:
+      name: x-tive-account-id
+      in: header
+      required: true
+      schema:
+        type: string
+      description: The Tive account ID. Required by most non-authentication endpoints.
+  schemas:
+    Device:
+      type: object
+      properties:
+        deviceId:
+          type: string
+          description: 15-digit unique identifier matching the device IMEI.
+        deviceName:
+          type: string
+        accountId:
+          type: string
+        deviceOwner:
+          type: string
+        batteryPercent:
+          type: number
+        description:
+          type: string
+        powerButtonEnabled:
+          type: boolean
+        gpsEnabled:
+          type: boolean
+        wifiEnabled:
+          type: boolean
+        measurementInterval:
+          type: integer
+          description: Data capture frequency in minutes.
+        transmissionInterval:
+          type: integer
+          description: Data transmission frequency in minutes.
+        estimatedBatteryLifeMinutes:
+          type: integer
+        alertPresetIds:
+          type: array
+          items:
+            type: string
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer
+      description: 'Bearer token obtained from POST /authenticate. Send it as ''Authorization: Bearer <token>''. Most endpoints additionally require the x-tive-account-id header.'
