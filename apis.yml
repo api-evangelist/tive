@@ -7,7 +7,20 @@ description: Tive is a real-time supply-chain and shipment visibility platform b
   and track shipments, manage trackers/devices, pull sensor data (location, temperature,
   humidity, pressure, light, motion, battery), configure alert presets, and subscribe
   to webhooks for push event delivery.
-image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
+accessModel:
+  pricing: enterprise
+  onboarding: self-serve
+  trial: false
+  try_now: false
+  public: false
+  label: Enterprise · Self-serve signup
+  confidence: high
+  source:
+  - plans
+  - authentication
+  generated: '2026-07-22'
+  method: derived
+image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/icons/tive.png
 tags:
 - Supply Chain
 - Shipment Visibility
@@ -19,96 +32,150 @@ created: '2026-06-21'
 modified: '2026-06-21'
 specificationVersion: '0.19'
 apis:
-- aid: tive:tive-shipments-api
-  name: Tive Shipments API
-  tags:
-  - Shipments
-  - Logistics
-  - Tracking
-  image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
-  humanURL: https://developers.tive.com/docs/create-a-shipment
-  baseURL: https://api.tive.com/public/v3
-  properties:
-  - url: https://developers.tive.com/docs/create-a-shipment
-    type: Documentation
-  - url: https://developers.tive.com/reference/overview
-    type: APIReference
-  - url: openapi/tive-openapi.yml
-    type: OpenAPI
-  description: Create, list, retrieve, update, start, and complete multi-leg shipments
-    (Road, Air, Ocean, Rail) and sync them with existing applications.
-- aid: tive:tive-trackers-devices-api
-  name: Tive Trackers / Devices API
-  tags:
-  - Devices
-  - Trackers
-  - IoT
-  image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
-  humanURL: https://developers.tive.com/docs/devices
-  baseURL: https://api.tive.com/public/v3
-  properties:
-  - url: https://developers.tive.com/docs/devices
-    type: Documentation
-  - url: https://developers.tive.com/reference/overview
-    type: APIReference
-  - url: openapi/tive-openapi.yml
-    type: OpenAPI
-  description: List and retrieve Tive trackers (devices) by deviceId (IMEI) or name,
-    including battery, GPS/WiFi state, and measurement/transmission interval settings.
-- aid: tive:tive-sensor-data-api
-  name: Tive Sensor Data API
-  tags:
-  - Sensor Data
-  - Telemetry
-  - Location
-  image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
-  humanURL: https://developers.tive.com/docs/shipment-data
-  baseURL: https://api.tive.com/public/v3
-  properties:
-  - url: https://developers.tive.com/docs/shipment-data
-    type: Documentation
-  - url: https://developers.tive.com/reference/overview
-    type: APIReference
-  - url: openapi/tive-openapi.yml
-    type: OpenAPI
-  description: Retrieve a shipment's tracker sensor data - location, temperature, humidity,
-    pressure, light, motion, and battery - optionally narrowed by a UTC start/end range.
 - aid: tive:tive-alerts-api
   name: Tive Alerts API
+  description: The Alerts API from Tive — 1 operation(s) for alerts.
+  humanURL: https://developers.tive.com/docs/create-a-shipment
+  baseURL: https://api.tive.com/public/v3
   tags:
   - Alerts
-  - Alert Presets
-  - Monitoring
-  image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
-  humanURL: https://developers.tive.com/docs/alert-presets
-  baseURL: https://api.tive.com/public/v3
   properties:
-  - url: https://developers.tive.com/docs/alert-presets
-    type: Documentation
-  - url: https://developers.tive.com/reference/overview
-    type: APIReference
-  - url: openapi/tive-openapi.yml
-    type: OpenAPI
-  description: Create, list, retrieve, and update alert presets - configurable triggers
-    (e.g. high temperature, light detection) attached to shipments and trackers.
+  - type: OpenAPI
+    url: openapi/tive-alerts-api-openapi.yml
+  - type: Documentation
+    url: https://developers.tive.com/docs/create-a-shipment
+  - type: APIReference
+    url: https://developers.tive.com/reference/overview
+  - type: Documentation
+    url: https://developers.tive.com/docs/devices
+  - type: Documentation
+    url: https://developers.tive.com/docs/shipment-data
+  - type: Documentation
+    url: https://developers.tive.com/docs/alert-presets
+  - type: Documentation
+    url: https://developers.tive.com/docs/webhooks
+  - type: Documentation
+    url: https://developers.tive.com/docs/creating-webhooks
+- aid: tive:tive-authentication-api
+  name: Tive Authentication API
+  description: The Authentication API from Tive — 1 operation(s) for authentication.
+  humanURL: https://developers.tive.com/docs/create-a-shipment
+  baseURL: https://api.tive.com/public/v3
+  tags:
+  - Authentication
+  properties:
+  - type: OpenAPI
+    url: openapi/tive-authentication-api-openapi.yml
+  - type: Documentation
+    url: https://developers.tive.com/docs/create-a-shipment
+  - type: APIReference
+    url: https://developers.tive.com/reference/overview
+  - type: Documentation
+    url: https://developers.tive.com/docs/devices
+  - type: Documentation
+    url: https://developers.tive.com/docs/shipment-data
+  - type: Documentation
+    url: https://developers.tive.com/docs/alert-presets
+  - type: Documentation
+    url: https://developers.tive.com/docs/webhooks
+  - type: Documentation
+    url: https://developers.tive.com/docs/creating-webhooks
+- aid: tive:tive-devices-api
+  name: Tive Devices API
+  description: The Devices API from Tive — 2 operation(s) for devices.
+  humanURL: https://developers.tive.com/docs/create-a-shipment
+  baseURL: https://api.tive.com/public/v3
+  tags:
+  - Devices
+  properties:
+  - type: OpenAPI
+    url: openapi/tive-devices-api-openapi.yml
+  - type: Documentation
+    url: https://developers.tive.com/docs/create-a-shipment
+  - type: APIReference
+    url: https://developers.tive.com/reference/overview
+  - type: Documentation
+    url: https://developers.tive.com/docs/devices
+  - type: Documentation
+    url: https://developers.tive.com/docs/shipment-data
+  - type: Documentation
+    url: https://developers.tive.com/docs/alert-presets
+  - type: Documentation
+    url: https://developers.tive.com/docs/webhooks
+  - type: Documentation
+    url: https://developers.tive.com/docs/creating-webhooks
+- aid: tive:tive-sensor-data-api
+  name: Tive Sensor Data API
+  description: The Sensor Data API from Tive — 1 operation(s) for sensor data.
+  humanURL: https://developers.tive.com/docs/create-a-shipment
+  baseURL: https://api.tive.com/public/v3
+  tags:
+  - Sensor Data
+  properties:
+  - type: OpenAPI
+    url: openapi/tive-sensor-data-api-openapi.yml
+  - type: Documentation
+    url: https://developers.tive.com/docs/create-a-shipment
+  - type: APIReference
+    url: https://developers.tive.com/reference/overview
+  - type: Documentation
+    url: https://developers.tive.com/docs/devices
+  - type: Documentation
+    url: https://developers.tive.com/docs/shipment-data
+  - type: Documentation
+    url: https://developers.tive.com/docs/alert-presets
+  - type: Documentation
+    url: https://developers.tive.com/docs/webhooks
+  - type: Documentation
+    url: https://developers.tive.com/docs/creating-webhooks
+- aid: tive:tive-shipments-api
+  name: Tive Shipments API
+  description: The Shipments API from Tive — 3 operation(s) for shipments.
+  humanURL: https://developers.tive.com/docs/create-a-shipment
+  baseURL: https://api.tive.com/public/v3
+  tags:
+  - Shipments
+  properties:
+  - type: OpenAPI
+    url: openapi/tive-shipments-api-openapi.yml
+  - type: Documentation
+    url: https://developers.tive.com/docs/create-a-shipment
+  - type: APIReference
+    url: https://developers.tive.com/reference/overview
+  - type: Documentation
+    url: https://developers.tive.com/docs/devices
+  - type: Documentation
+    url: https://developers.tive.com/docs/shipment-data
+  - type: Documentation
+    url: https://developers.tive.com/docs/alert-presets
+  - type: Documentation
+    url: https://developers.tive.com/docs/webhooks
+  - type: Documentation
+    url: https://developers.tive.com/docs/creating-webhooks
 - aid: tive:tive-webhooks-api
   name: Tive Webhooks API
+  description: The Webhooks API from Tive — 2 operation(s) for webhooks.
+  humanURL: https://developers.tive.com/docs/create-a-shipment
+  baseURL: https://api.tive.com/public/v3
   tags:
   - Webhooks
-  - Events
-  - Push
-  image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
-  humanURL: https://developers.tive.com/docs/webhooks
-  baseURL: https://api.tive.com/public/v3
   properties:
-  - url: https://developers.tive.com/docs/webhooks
-    type: Documentation
-  - url: https://developers.tive.com/docs/creating-webhooks
-    type: Documentation
-  - url: openapi/tive-openapi.yml
-    type: OpenAPI
-  description: Manage account-level webhooks that push device measurement and alert
-    events to an HTTPS endpoint, scoped to all trackers, shipments, or alert presets.
+  - type: OpenAPI
+    url: openapi/tive-webhooks-api-openapi.yml
+  - type: Documentation
+    url: https://developers.tive.com/docs/create-a-shipment
+  - type: APIReference
+    url: https://developers.tive.com/reference/overview
+  - type: Documentation
+    url: https://developers.tive.com/docs/devices
+  - type: Documentation
+    url: https://developers.tive.com/docs/shipment-data
+  - type: Documentation
+    url: https://developers.tive.com/docs/alert-presets
+  - type: Documentation
+    url: https://developers.tive.com/docs/webhooks
+  - type: Documentation
+    url: https://developers.tive.com/docs/creating-webhooks
 common:
 - type: AgenticAccess
   url: agentic-access/tive-agentic-access.yml
