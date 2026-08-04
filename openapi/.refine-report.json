@@ -1,0 +1,24 @@
+{
+  "provider": "tive",
+  "sources": [
+    "tive-alerts-api-openapi.yml",
+    "tive-authentication-api-openapi.yml",
+    "tive-devices-api-openapi.yml",
+    "tive-sensor-data-api-openapi.yml",
+    "tive-shipments-api-openapi.yml",
+    "tive-webhooks-api-openapi.yml"
+  ],
+  "outputs": [
+    "tive-alerts-api-openapi.yml",
+    "tive-authentication-api-openapi.yml",
+    "tive-devices-api-openapi.yml",
+    "tive-sensor-data-api-openapi.yml",
+    "tive-shipments-api-openapi.yml",
+    "tive-webhooks-api-openapi.yml"
+  ],
+  "archived": [],
+  "errors": [],
+  "warnings": [],
+  "notes": [],
+  "skipped": []
+}
