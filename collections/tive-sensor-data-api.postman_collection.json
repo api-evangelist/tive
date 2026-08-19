@@ -1,0 +1,173 @@
+{
+  "item": [
+    {
+      "id": "d8d1246d-099c-4a09-ba51-c7d4d56bde07",
+      "name": "Sensor Data",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "44f5afb6-0312-41c3-9ca2-73d524c29c49",
+          "name": "Get shipment tracker data",
+          "request": {
+            "name": "Get shipment tracker data",
+            "description": {
+              "content": "Returns the shipment's tracker sensor data - location, temperature, humidity, pressure, light, motion, and battery. Optionally narrow the result with a UTC start and end date range; if omitted, the full shipment duration is returned.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "shipments",
+                ":shipmentId",
+                "trackerData"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "startDate",
+                  "value": "<dateTime>",
+                  "description": "UTC start of the sensor data range."
+                },
+                {
+                  "disabled": false,
+                  "key": "endDate",
+                  "value": "<dateTime>",
+                  "description": "UTC end of the sensor data range."
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "shipmentId",
+                  "description": "(Required) The public shipment identifier."
+                }
+              ]
+            },
+            "header": [
+              {
+                "disabled": false,
+                "description": "(Required) The Tive account ID. Required by most non-authentication endpoints.",
+                "key": "x-tive-account-id",
+                "value": "<string>"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "04bfb0a6-aef6-42df-a37a-f81fa7a58c46",
+              "name": "Sensor data readings.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "shipments",
+                    ":shipmentId",
+                    "trackerData"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "startDate",
+                      "value": "<dateTime>"
+                    },
+                    {
+                      "key": "endDate",
+                      "value": "<dateTime>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "shipmentId",
+                      "description": "(Required) The public shipment identifier."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) The Tive account ID. Required by most non-authentication endpoints.",
+                    "key": "x-tive-account-id",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"timestamp\": \"1969-03-21T10:05:16.916Z\",\n    \"location\": {\n      \"latitude\": 1831.3165758685125,\n      \"longitude\": 4353.917825946279\n    },\n    \"temperature\": 941.4979171817772,\n    \"humidity\": 2416.1340289432756,\n    \"pressure\": 1951.4132332821987,\n    \"light\": 9968.19124394951,\n    \"motion\": 8587.153794275662,\n    \"battery\": 8565.51153472264\n  },\n  {\n    \"timestamp\": \"1997-05-11T11:03:10.547Z\",\n    \"location\": {\n      \"latitude\": 5270.608038715413,\n      \"longitude\": 4844.497923735478\n    },\n    \"temperature\": 1665.8748491969554,\n    \"humidity\": 9450.73711187446,\n    \"pressure\": 8535.613637976154,\n    \"light\": 3586.9632830597275,\n    \"motion\": 8301.566033116904,\n    \"battery\": 6598.599200566756\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.tive.com/public/v3",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "bearer",
+    "bearer": [
+      {
+        "key": "token",
+        "value": "{{bearerToken}}"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "9f01d208-7f0c-42f6-a52d-1289ee40a21e",
+    "name": "Tive Public Alerts Sensor Data API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "Specification of the Tive Public API (v3) for real-time supply-chain and shipment visibility. The API lets you create and track shipments, manage trackers (devices), retrieve sensor data (location, temperature, humidity, pressure, light, motion, battery), configure alert presets, and manage webhooks. This document models documented, real endpoints; it is intentionally a small-but-real subset and avoids fabricating undocumented surface area.\n\nContact Support:\n Name: Tive Support",
+      "type": "text/plain"
+    }
+  }
+}

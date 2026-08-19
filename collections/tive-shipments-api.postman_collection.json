@@ -1,0 +1,574 @@
+{
+  "item": [
+    {
+      "id": "e3913744-d0cf-4b16-b5bc-12a6f9b6627f",
+      "name": "Shipments",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "d8884a8b-f50d-4cef-ad40-983886259dde",
+          "name": "List shipments",
+          "request": {
+            "name": "List shipments",
+            "description": {},
+            "url": {
+              "path": [
+                "shipments"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "disabled": false,
+                "description": "(Required) The Tive account ID. Required by most non-authentication endpoints.",
+                "key": "x-tive-account-id",
+                "value": "<string>"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "ad8cb77c-e35c-4d4e-aedb-3d07ac349dce",
+              "name": "A list of shipments.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "shipments"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) The Tive account ID. Required by most non-authentication endpoints.",
+                    "key": "x-tive-account-id",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"shipmentId\": \"string\",\n    \"publicShipmentId\": \"string\",\n    \"name\": \"string\",\n    \"status\": \"string\",\n    \"devices\": [\n      \"string\",\n      \"string\"\n    ],\n    \"shipmentLegs\": [\n      {\n        \"mode\": \"Road\",\n        \"fromAddress\": \"string\",\n        \"toAddress\": \"string\",\n        \"fromLocationId\": \"string\",\n        \"toLocationId\": \"string\",\n        \"fromCoordinates\": {\n          \"latitude\": 5729.765377214353,\n          \"longitude\": 9891.268600173968\n        },\n        \"toCoordinates\": {\n          \"latitude\": 1928.3219517311877,\n          \"longitude\": 8998.576232430134\n        },\n        \"shipFromDate\": \"1964-12-05T18:10:51.686Z\"\n      },\n      {\n        \"mode\": \"Ocean\",\n        \"fromAddress\": \"string\",\n        \"toAddress\": \"string\",\n        \"fromLocationId\": \"string\",\n        \"toLocationId\": \"string\",\n        \"fromCoordinates\": {\n          \"latitude\": 8826.042624413543,\n          \"longitude\": 1963.6124325315584\n        },\n        \"toCoordinates\": {\n          \"latitude\": 6939.180699128693,\n          \"longitude\": 5898.367965625466\n        },\n        \"shipFromDate\": \"2013-05-24T19:51:18.334Z\"\n      }\n    ],\n    \"alertPresetIds\": [\n      \"string\",\n      \"string\"\n    ]\n  },\n  {\n    \"shipmentId\": \"string\",\n    \"publicShipmentId\": \"string\",\n    \"name\": \"string\",\n    \"status\": \"string\",\n    \"devices\": [\n      \"string\",\n      \"string\"\n    ],\n    \"shipmentLegs\": [\n      {\n        \"mode\": \"Road\",\n        \"fromAddress\": \"string\",\n        \"toAddress\": \"string\",\n        \"fromLocationId\": \"string\",\n        \"toLocationId\": \"string\",\n        \"fromCoordinates\": {\n          \"latitude\": 9962.963405676268,\n          \"longitude\": 9796.554836807367\n        },\n        \"toCoordinates\": {\n          \"latitude\": 45.69848868975601,\n          \"longitude\": 4473.560004621598\n        },\n        \"shipFromDate\": \"2011-07-01T12:12:44.067Z\"\n      },\n      {\n        \"mode\": \"Ocean\",\n        \"fromAddress\": \"string\",\n        \"toAddress\": \"string\",\n        \"fromLocationId\": \"string\",\n        \"toLocationId\": \"string\",\n        \"fromCoordinates\": {\n          \"latitude\": 9344.951145856667,\n          \"longitude\": 4933.898993204278\n        },\n        \"toCoordinates\": {\n          \"latitude\": 6473.009752203803,\n          \"longitude\": 4184.814326274244\n        },\n        \"shipFromDate\": \"1968-07-04T14:28:10.998Z\"\n      }\n    ],\n    \"alertPresetIds\": [\n      \"string\",\n      \"string\"\n    ]\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "2708a982-6801-4089-8507-d90abec0ff3f",
+          "name": "Create a shipment",
+          "request": {
+            "name": "Create a shipment",
+            "description": {},
+            "url": {
+              "path": [
+                "shipments"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "disabled": false,
+                "description": "(Required) The Tive account ID. Required by most non-authentication endpoints.",
+                "key": "x-tive-account-id",
+                "value": "<string>"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"shipmentId\": \"<string>\",\n  \"publicShipmentId\": \"<string>\",\n  \"name\": \"<string>\",\n  \"status\": \"<string>\",\n  \"devices\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"shipmentLegs\": [\n    {\n      \"mode\": \"<string>\",\n      \"fromAddress\": \"<string>\",\n      \"toAddress\": \"<string>\",\n      \"fromLocationId\": \"<string>\",\n      \"toLocationId\": \"<string>\",\n      \"fromCoordinates\": {\n        \"latitude\": \"<double>\",\n        \"longitude\": \"<double>\"\n      },\n      \"toCoordinates\": {\n        \"latitude\": \"<double>\",\n        \"longitude\": \"<double>\"\n      },\n      \"shipFromDate\": \"<dateTime>\"\n    },\n    {\n      \"mode\": \"<string>\",\n      \"fromAddress\": \"<string>\",\n      \"toAddress\": \"<string>\",\n      \"fromLocationId\": \"<string>\",\n      \"toLocationId\": \"<string>\",\n      \"fromCoordinates\": {\n        \"latitude\": \"<double>\",\n        \"longitude\": \"<double>\"\n      },\n      \"toCoordinates\": {\n        \"latitude\": \"<double>\",\n        \"longitude\": \"<double>\"\n      },\n      \"shipFromDate\": \"<dateTime>\"\n    }\n  ],\n  \"alertPresetIds\": [\n    \"<string>\",\n    \"<string>\"\n  ]\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "eec38578-cae2-4dbb-8b5c-5ed6b0026216",
+              "name": "The created shipment.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "shipments"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) The Tive account ID. Required by most non-authentication endpoints.",
+                    "key": "x-tive-account-id",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"shipmentId\": \"<string>\",\n  \"publicShipmentId\": \"<string>\",\n  \"name\": \"<string>\",\n  \"status\": \"<string>\",\n  \"devices\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"shipmentLegs\": [\n    {\n      \"mode\": \"<string>\",\n      \"fromAddress\": \"<string>\",\n      \"toAddress\": \"<string>\",\n      \"fromLocationId\": \"<string>\",\n      \"toLocationId\": \"<string>\",\n      \"fromCoordinates\": {\n        \"latitude\": \"<double>\",\n        \"longitude\": \"<double>\"\n      },\n      \"toCoordinates\": {\n        \"latitude\": \"<double>\",\n        \"longitude\": \"<double>\"\n      },\n      \"shipFromDate\": \"<dateTime>\"\n    },\n    {\n      \"mode\": \"<string>\",\n      \"fromAddress\": \"<string>\",\n      \"toAddress\": \"<string>\",\n      \"fromLocationId\": \"<string>\",\n      \"toLocationId\": \"<string>\",\n      \"fromCoordinates\": {\n        \"latitude\": \"<double>\",\n        \"longitude\": \"<double>\"\n      },\n      \"toCoordinates\": {\n        \"latitude\": \"<double>\",\n        \"longitude\": \"<double>\"\n      },\n      \"shipFromDate\": \"<dateTime>\"\n    }\n  ],\n  \"alertPresetIds\": [\n    \"<string>\",\n    \"<string>\"\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"shipmentId\": \"<string>\",\n  \"publicShipmentId\": \"<string>\",\n  \"name\": \"<string>\",\n  \"status\": \"<string>\",\n  \"devices\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"shipmentLegs\": [\n    {\n      \"mode\": \"<string>\",\n      \"fromAddress\": \"<string>\",\n      \"toAddress\": \"<string>\",\n      \"fromLocationId\": \"<string>\",\n      \"toLocationId\": \"<string>\",\n      \"fromCoordinates\": {\n        \"latitude\": \"<double>\",\n        \"longitude\": \"<double>\"\n      },\n      \"toCoordinates\": {\n        \"latitude\": \"<double>\",\n        \"longitude\": \"<double>\"\n      },\n      \"shipFromDate\": \"<dateTime>\"\n    },\n    {\n      \"mode\": \"<string>\",\n      \"fromAddress\": \"<string>\",\n      \"toAddress\": \"<string>\",\n      \"fromLocationId\": \"<string>\",\n      \"toLocationId\": \"<string>\",\n      \"fromCoordinates\": {\n        \"latitude\": \"<double>\",\n        \"longitude\": \"<double>\"\n      },\n      \"toCoordinates\": {\n        \"latitude\": \"<double>\",\n        \"longitude\": \"<double>\"\n      },\n      \"shipFromDate\": \"<dateTime>\"\n    }\n  ],\n  \"alertPresetIds\": [\n    \"<string>\",\n    \"<string>\"\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "2a7051d4-a346-4faf-aa53-733b38ff8aff",
+          "name": "Retrieve a shipment",
+          "request": {
+            "name": "Retrieve a shipment",
+            "description": {},
+            "url": {
+              "path": [
+                "shipments",
+                ":shipmentId"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "shipmentId",
+                  "description": "(Required) The public shipment identifier."
+                }
+              ]
+            },
+            "header": [
+              {
+                "disabled": false,
+                "description": "(Required) The Tive account ID. Required by most non-authentication endpoints.",
+                "key": "x-tive-account-id",
+                "value": "<string>"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "2b9a0ee9-ff0a-48a3-848b-911c7eb997d2",
+              "name": "A shipment.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "shipments",
+                    ":shipmentId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "shipmentId",
+                      "description": "(Required) The public shipment identifier."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) The Tive account ID. Required by most non-authentication endpoints.",
+                    "key": "x-tive-account-id",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"shipmentId\": \"<string>\",\n  \"publicShipmentId\": \"<string>\",\n  \"name\": \"<string>\",\n  \"status\": \"<string>\",\n  \"devices\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"shipmentLegs\": [\n    {\n      \"mode\": \"<string>\",\n      \"fromAddress\": \"<string>\",\n      \"toAddress\": \"<string>\",\n      \"fromLocationId\": \"<string>\",\n      \"toLocationId\": \"<string>\",\n      \"fromCoordinates\": {\n        \"latitude\": \"<double>\",\n        \"longitude\": \"<double>\"\n      },\n      \"toCoordinates\": {\n        \"latitude\": \"<double>\",\n        \"longitude\": \"<double>\"\n      },\n      \"shipFromDate\": \"<dateTime>\"\n    },\n    {\n      \"mode\": \"<string>\",\n      \"fromAddress\": \"<string>\",\n      \"toAddress\": \"<string>\",\n      \"fromLocationId\": \"<string>\",\n      \"toLocationId\": \"<string>\",\n      \"fromCoordinates\": {\n        \"latitude\": \"<double>\",\n        \"longitude\": \"<double>\"\n      },\n      \"toCoordinates\": {\n        \"latitude\": \"<double>\",\n        \"longitude\": \"<double>\"\n      },\n      \"shipFromDate\": \"<dateTime>\"\n    }\n  ],\n  \"alertPresetIds\": [\n    \"<string>\",\n    \"<string>\"\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "2deeb0c8-8603-4b7e-8778-1d748203905e",
+          "name": "Update a shipment",
+          "request": {
+            "name": "Update a shipment",
+            "description": {},
+            "url": {
+              "path": [
+                "shipments",
+                ":shipmentId"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "shipmentId",
+                  "description": "(Required) The public shipment identifier."
+                }
+              ]
+            },
+            "header": [
+              {
+                "disabled": false,
+                "description": "(Required) The Tive account ID. Required by most non-authentication endpoints.",
+                "key": "x-tive-account-id",
+                "value": "<string>"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "PUT",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"shipmentId\": \"<string>\",\n  \"publicShipmentId\": \"<string>\",\n  \"name\": \"<string>\",\n  \"status\": \"<string>\",\n  \"devices\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"shipmentLegs\": [\n    {\n      \"mode\": \"<string>\",\n      \"fromAddress\": \"<string>\",\n      \"toAddress\": \"<string>\",\n      \"fromLocationId\": \"<string>\",\n      \"toLocationId\": \"<string>\",\n      \"fromCoordinates\": {\n        \"latitude\": \"<double>\",\n        \"longitude\": \"<double>\"\n      },\n      \"toCoordinates\": {\n        \"latitude\": \"<double>\",\n        \"longitude\": \"<double>\"\n      },\n      \"shipFromDate\": \"<dateTime>\"\n    },\n    {\n      \"mode\": \"<string>\",\n      \"fromAddress\": \"<string>\",\n      \"toAddress\": \"<string>\",\n      \"fromLocationId\": \"<string>\",\n      \"toLocationId\": \"<string>\",\n      \"fromCoordinates\": {\n        \"latitude\": \"<double>\",\n        \"longitude\": \"<double>\"\n      },\n      \"toCoordinates\": {\n        \"latitude\": \"<double>\",\n        \"longitude\": \"<double>\"\n      },\n      \"shipFromDate\": \"<dateTime>\"\n    }\n  ],\n  \"alertPresetIds\": [\n    \"<string>\",\n    \"<string>\"\n  ]\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "871a5f98-d87c-4c07-a92c-1358a6cb32ec",
+              "name": "The updated shipment.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "shipments",
+                    ":shipmentId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "shipmentId",
+                      "description": "(Required) The public shipment identifier."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) The Tive account ID. Required by most non-authentication endpoints.",
+                    "key": "x-tive-account-id",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"shipmentId\": \"<string>\",\n  \"publicShipmentId\": \"<string>\",\n  \"name\": \"<string>\",\n  \"status\": \"<string>\",\n  \"devices\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"shipmentLegs\": [\n    {\n      \"mode\": \"<string>\",\n      \"fromAddress\": \"<string>\",\n      \"toAddress\": \"<string>\",\n      \"fromLocationId\": \"<string>\",\n      \"toLocationId\": \"<string>\",\n      \"fromCoordinates\": {\n        \"latitude\": \"<double>\",\n        \"longitude\": \"<double>\"\n      },\n      \"toCoordinates\": {\n        \"latitude\": \"<double>\",\n        \"longitude\": \"<double>\"\n      },\n      \"shipFromDate\": \"<dateTime>\"\n    },\n    {\n      \"mode\": \"<string>\",\n      \"fromAddress\": \"<string>\",\n      \"toAddress\": \"<string>\",\n      \"fromLocationId\": \"<string>\",\n      \"toLocationId\": \"<string>\",\n      \"fromCoordinates\": {\n        \"latitude\": \"<double>\",\n        \"longitude\": \"<double>\"\n      },\n      \"toCoordinates\": {\n        \"latitude\": \"<double>\",\n        \"longitude\": \"<double>\"\n      },\n      \"shipFromDate\": \"<dateTime>\"\n    }\n  ],\n  \"alertPresetIds\": [\n    \"<string>\",\n    \"<string>\"\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"shipmentId\": \"<string>\",\n  \"publicShipmentId\": \"<string>\",\n  \"name\": \"<string>\",\n  \"status\": \"<string>\",\n  \"devices\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"shipmentLegs\": [\n    {\n      \"mode\": \"<string>\",\n      \"fromAddress\": \"<string>\",\n      \"toAddress\": \"<string>\",\n      \"fromLocationId\": \"<string>\",\n      \"toLocationId\": \"<string>\",\n      \"fromCoordinates\": {\n        \"latitude\": \"<double>\",\n        \"longitude\": \"<double>\"\n      },\n      \"toCoordinates\": {\n        \"latitude\": \"<double>\",\n        \"longitude\": \"<double>\"\n      },\n      \"shipFromDate\": \"<dateTime>\"\n    },\n    {\n      \"mode\": \"<string>\",\n      \"fromAddress\": \"<string>\",\n      \"toAddress\": \"<string>\",\n      \"fromLocationId\": \"<string>\",\n      \"toLocationId\": \"<string>\",\n      \"fromCoordinates\": {\n        \"latitude\": \"<double>\",\n        \"longitude\": \"<double>\"\n      },\n      \"toCoordinates\": {\n        \"latitude\": \"<double>\",\n        \"longitude\": \"<double>\"\n      },\n      \"shipFromDate\": \"<dateTime>\"\n    }\n  ],\n  \"alertPresetIds\": [\n    \"<string>\",\n    \"<string>\"\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "b023a965-7df3-4cd1-aec0-dd19a89a45cc",
+          "name": "Start a shipment",
+          "request": {
+            "name": "Start a shipment",
+            "description": {},
+            "url": {
+              "path": [
+                "shipments",
+                ":shipmentId",
+                "start"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "shipmentId",
+                  "description": "(Required) The public shipment identifier."
+                }
+              ]
+            },
+            "header": [
+              {
+                "disabled": false,
+                "description": "(Required) The Tive account ID. Required by most non-authentication endpoints.",
+                "key": "x-tive-account-id",
+                "value": "<string>"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "PATCH",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "ad43f029-8d96-4273-aaa5-c7cfe3220657",
+              "name": "The started shipment.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "shipments",
+                    ":shipmentId",
+                    "start"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "shipmentId",
+                      "description": "(Required) The public shipment identifier."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) The Tive account ID. Required by most non-authentication endpoints.",
+                    "key": "x-tive-account-id",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"shipmentId\": \"<string>\",\n  \"publicShipmentId\": \"<string>\",\n  \"name\": \"<string>\",\n  \"status\": \"<string>\",\n  \"devices\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"shipmentLegs\": [\n    {\n      \"mode\": \"<string>\",\n      \"fromAddress\": \"<string>\",\n      \"toAddress\": \"<string>\",\n      \"fromLocationId\": \"<string>\",\n      \"toLocationId\": \"<string>\",\n      \"fromCoordinates\": {\n        \"latitude\": \"<double>\",\n        \"longitude\": \"<double>\"\n      },\n      \"toCoordinates\": {\n        \"latitude\": \"<double>\",\n        \"longitude\": \"<double>\"\n      },\n      \"shipFromDate\": \"<dateTime>\"\n    },\n    {\n      \"mode\": \"<string>\",\n      \"fromAddress\": \"<string>\",\n      \"toAddress\": \"<string>\",\n      \"fromLocationId\": \"<string>\",\n      \"toLocationId\": \"<string>\",\n      \"fromCoordinates\": {\n        \"latitude\": \"<double>\",\n        \"longitude\": \"<double>\"\n      },\n      \"toCoordinates\": {\n        \"latitude\": \"<double>\",\n        \"longitude\": \"<double>\"\n      },\n      \"shipFromDate\": \"<dateTime>\"\n    }\n  ],\n  \"alertPresetIds\": [\n    \"<string>\",\n    \"<string>\"\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.tive.com/public/v3",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "bearer",
+    "bearer": [
+      {
+        "key": "token",
+        "value": "{{bearerToken}}"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "ad0f19d9-5715-4d0e-87ab-5fdad8b38f59",
+    "name": "Tive Public Alerts Shipments API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "Specification of the Tive Public API (v3) for real-time supply-chain and shipment visibility. The API lets you create and track shipments, manage trackers (devices), retrieve sensor data (location, temperature, humidity, pressure, light, motion, battery), configure alert presets, and manage webhooks. This document models documented, real endpoints; it is intentionally a small-but-real subset and avoids fabricating undocumented surface area.\n\nContact Support:\n Name: Tive Support",
+      "type": "text/plain"
+    }
+  }
+}

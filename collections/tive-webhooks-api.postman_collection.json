@@ -1,0 +1,441 @@
+{
+  "item": [
+    {
+      "id": "0bb67177-2b34-42e2-8d06-4be45cc3567e",
+      "name": "Webhooks",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "b892a6b2-b12a-4b0a-9846-7317fc46051c",
+          "name": "List webhooks",
+          "request": {
+            "name": "List webhooks",
+            "description": {},
+            "url": {
+              "path": [
+                "webhooks"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "disabled": false,
+                "description": "(Required) The Tive account ID. Required by most non-authentication endpoints.",
+                "key": "x-tive-account-id",
+                "value": "<string>"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "a56fb6eb-dbd3-4685-8e86-e220bf4864ea",
+              "name": "A list of webhooks.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "webhooks"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) The Tive account ID. Required by most non-authentication endpoints.",
+                    "key": "x-tive-account-id",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"webhookId\": \"string\",\n    \"url\": \"string\",\n    \"httpMethod\": \"POST\",\n    \"contentType\": \"application/json\",\n    \"enabled\": false,\n    \"applyToAllTrackers\": true,\n    \"applyToAllShipments\": false,\n    \"applyToAllAlertPresets\": false,\n    \"accountIds\": [\n      \"string\",\n      \"string\"\n    ]\n  },\n  {\n    \"webhookId\": \"string\",\n    \"url\": \"string\",\n    \"httpMethod\": \"POST\",\n    \"contentType\": \"application/json\",\n    \"enabled\": false,\n    \"applyToAllTrackers\": true,\n    \"applyToAllShipments\": true,\n    \"applyToAllAlertPresets\": true,\n    \"accountIds\": [\n      \"string\",\n      \"string\"\n    ]\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "19a0ef71-786d-4a09-a8a4-4dc32ab9bb13",
+          "name": "Create a webhook",
+          "request": {
+            "name": "Create a webhook",
+            "description": {
+              "content": "At least one of applyToAllTrackers, applyToAllShipments, or applyToAllAlertPresets must be set to true.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "webhooks"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "disabled": false,
+                "description": "(Required) The Tive account ID. Required by most non-authentication endpoints.",
+                "key": "x-tive-account-id",
+                "value": "<string>"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"webhookId\": \"<string>\",\n  \"url\": \"<string>\",\n  \"httpMethod\": \"<string>\",\n  \"contentType\": \"<string>\",\n  \"enabled\": \"<boolean>\",\n  \"applyToAllTrackers\": \"<boolean>\",\n  \"applyToAllShipments\": \"<boolean>\",\n  \"applyToAllAlertPresets\": \"<boolean>\",\n  \"accountIds\": [\n    \"<string>\",\n    \"<string>\"\n  ]\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "9cea314c-b573-4ab3-868d-0a3e632a0a46",
+              "name": "The created webhook.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "webhooks"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) The Tive account ID. Required by most non-authentication endpoints.",
+                    "key": "x-tive-account-id",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"webhookId\": \"<string>\",\n  \"url\": \"<string>\",\n  \"httpMethod\": \"POST\",\n  \"contentType\": \"application/json\",\n  \"enabled\": \"<boolean>\",\n  \"applyToAllTrackers\": \"<boolean>\",\n  \"applyToAllShipments\": \"<boolean>\",\n  \"applyToAllAlertPresets\": \"<boolean>\",\n  \"accountIds\": [\n    \"<string>\",\n    \"<string>\"\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"webhookId\": \"<string>\",\n  \"url\": \"<string>\",\n  \"httpMethod\": \"POST\",\n  \"contentType\": \"application/json\",\n  \"enabled\": \"<boolean>\",\n  \"applyToAllTrackers\": \"<boolean>\",\n  \"applyToAllShipments\": \"<boolean>\",\n  \"applyToAllAlertPresets\": \"<boolean>\",\n  \"accountIds\": [\n    \"<string>\",\n    \"<string>\"\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "0da891d5-1f60-4f7b-a0a0-0fe56e719ec0",
+          "name": "Retrieve a webhook",
+          "request": {
+            "name": "Retrieve a webhook",
+            "description": {},
+            "url": {
+              "path": [
+                "webhooks",
+                ":webhookId"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "webhookId",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "disabled": false,
+                "description": "(Required) The Tive account ID. Required by most non-authentication endpoints.",
+                "key": "x-tive-account-id",
+                "value": "<string>"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "02848bd7-2d0f-4e62-b503-9c41467cc525",
+              "name": "A webhook.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "webhooks",
+                    ":webhookId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "webhookId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) The Tive account ID. Required by most non-authentication endpoints.",
+                    "key": "x-tive-account-id",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"webhookId\": \"<string>\",\n  \"url\": \"<string>\",\n  \"httpMethod\": \"POST\",\n  \"contentType\": \"application/json\",\n  \"enabled\": \"<boolean>\",\n  \"applyToAllTrackers\": \"<boolean>\",\n  \"applyToAllShipments\": \"<boolean>\",\n  \"applyToAllAlertPresets\": \"<boolean>\",\n  \"accountIds\": [\n    \"<string>\",\n    \"<string>\"\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "a0e6c5d6-8762-4e6a-8da2-0ba54f17f819",
+          "name": "Delete a webhook",
+          "request": {
+            "name": "Delete a webhook",
+            "description": {},
+            "url": {
+              "path": [
+                "webhooks",
+                ":webhookId"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "webhookId",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "disabled": false,
+                "description": "(Required) The Tive account ID. Required by most non-authentication endpoints.",
+                "key": "x-tive-account-id",
+                "value": "<string>"
+              }
+            ],
+            "method": "DELETE",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "952bf0d7-f76c-4d8c-8c34-b553f7678841",
+              "name": "The webhook was deleted.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "webhooks",
+                    ":webhookId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "webhookId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) The Tive account ID. Required by most non-authentication endpoints.",
+                    "key": "x-tive-account-id",
+                    "value": "<string>"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "No Content",
+              "code": 204,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.tive.com/public/v3",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "bearer",
+    "bearer": [
+      {
+        "key": "token",
+        "value": "{{bearerToken}}"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "1b83d1b5-16e1-46f2-ad4d-0b2ff15cd2f0",
+    "name": "Tive Public Alerts Webhooks API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "Specification of the Tive Public API (v3) for real-time supply-chain and shipment visibility. The API lets you create and track shipments, manage trackers (devices), retrieve sensor data (location, temperature, humidity, pressure, light, motion, battery), configure alert presets, and manage webhooks. This document models documented, real endpoints; it is intentionally a small-but-real subset and avoids fabricating undocumented surface area.\n\nContact Support:\n Name: Tive Support",
+      "type": "text/plain"
+    }
+  }
+}

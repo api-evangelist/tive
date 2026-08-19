@@ -1,0 +1,66 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Tive Public Alerts Devices API",
+    "version": "3.0"
+  },
+  "request": {
+    "auth": {
+      "type": "bearer",
+      "token": "{{bearerToken}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Devices",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List devices (trackers)",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.tive.com/public/v3/devices",
+            "headers": [
+              {
+                "name": "x-tive-account-id",
+                "value": ""
+              }
+            ]
+          },
+          "docs": "Returns up to 50 devices per request with pagination support."
+        },
+        {
+          "info": {
+            "name": "Retrieve a device (tracker)",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.tive.com/public/v3/devices/:deviceId",
+            "headers": [
+              {
+                "name": "x-tive-account-id",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "deviceId",
+                "value": "",
+                "type": "path",
+                "description": "The 15-digit device identifier (IMEI) or device name."
+              }
+            ]
+          },
+          "docs": "Retrieve a single device by its 15-digit deviceId (IMEI) or by device name."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

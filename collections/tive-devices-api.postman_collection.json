@@ -1,0 +1,239 @@
+{
+  "item": [
+    {
+      "id": "f66d1bbb-6d0a-4dfd-bc9d-ebc7026d6dde",
+      "name": "Devices",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "4ce2dbad-be18-481f-8cd4-ca19e698aa55",
+          "name": "List devices (trackers)",
+          "request": {
+            "name": "List devices (trackers)",
+            "description": {
+              "content": "Returns up to 50 devices per request with pagination support.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "devices"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "disabled": false,
+                "description": "(Required) The Tive account ID. Required by most non-authentication endpoints.",
+                "key": "x-tive-account-id",
+                "value": "<string>"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "f0f82821-b05b-4a47-9102-bc498f5e432d",
+              "name": "A list of devices.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "devices"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) The Tive account ID. Required by most non-authentication endpoints.",
+                    "key": "x-tive-account-id",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"deviceId\": \"string\",\n    \"deviceName\": \"string\",\n    \"accountId\": \"string\",\n    \"deviceOwner\": \"string\",\n    \"batteryPercent\": 2590.5398905242005,\n    \"description\": \"string\",\n    \"powerButtonEnabled\": true,\n    \"gpsEnabled\": false,\n    \"wifiEnabled\": false,\n    \"measurementInterval\": 5020,\n    \"transmissionInterval\": 7156,\n    \"estimatedBatteryLifeMinutes\": 6583,\n    \"alertPresetIds\": [\n      \"string\",\n      \"string\"\n    ]\n  },\n  {\n    \"deviceId\": \"string\",\n    \"deviceName\": \"string\",\n    \"accountId\": \"string\",\n    \"deviceOwner\": \"string\",\n    \"batteryPercent\": 4902.271354714639,\n    \"description\": \"string\",\n    \"powerButtonEnabled\": true,\n    \"gpsEnabled\": false,\n    \"wifiEnabled\": false,\n    \"measurementInterval\": 8415,\n    \"transmissionInterval\": 9256,\n    \"estimatedBatteryLifeMinutes\": 8394,\n    \"alertPresetIds\": [\n      \"string\",\n      \"string\"\n    ]\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "344c3728-0e62-493e-952a-1451544ed859",
+          "name": "Retrieve a device (tracker)",
+          "request": {
+            "name": "Retrieve a device (tracker)",
+            "description": {
+              "content": "Retrieve a single device by its 15-digit deviceId (IMEI) or by device name.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "devices",
+                ":deviceId"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "deviceId",
+                  "description": "(Required) The 15-digit device identifier (IMEI) or device name."
+                }
+              ]
+            },
+            "header": [
+              {
+                "disabled": false,
+                "description": "(Required) The Tive account ID. Required by most non-authentication endpoints.",
+                "key": "x-tive-account-id",
+                "value": "<string>"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "57928763-d635-4f98-96ca-8fcf894b9de6",
+              "name": "A device.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "devices",
+                    ":deviceId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "deviceId",
+                      "description": "(Required) The 15-digit device identifier (IMEI) or device name."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) The Tive account ID. Required by most non-authentication endpoints.",
+                    "key": "x-tive-account-id",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"deviceId\": \"string\",\n  \"deviceName\": \"string\",\n  \"accountId\": \"string\",\n  \"deviceOwner\": \"string\",\n  \"batteryPercent\": 3025.5998941672115,\n  \"description\": \"string\",\n  \"powerButtonEnabled\": true,\n  \"gpsEnabled\": true,\n  \"wifiEnabled\": true,\n  \"measurementInterval\": 8395,\n  \"transmissionInterval\": 2884,\n  \"estimatedBatteryLifeMinutes\": 5542,\n  \"alertPresetIds\": [\n    \"string\",\n    \"string\"\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.tive.com/public/v3",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "bearer",
+    "bearer": [
+      {
+        "key": "token",
+        "value": "{{bearerToken}}"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "93602dff-0e8d-43ba-8640-e39ff71494f5",
+    "name": "Tive Public Alerts Devices API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "Specification of the Tive Public API (v3) for real-time supply-chain and shipment visibility. The API lets you create and track shipments, manage trackers (devices), retrieve sensor data (location, temperature, humidity, pressure, light, motion, battery), configure alert presets, and manage webhooks. This document models documented, real endpoints; it is intentionally a small-but-real subset and avoids fabricating undocumented surface area.\n\nContact Support:\n Name: Tive Support",
+      "type": "text/plain"
+    }
+  }
+}

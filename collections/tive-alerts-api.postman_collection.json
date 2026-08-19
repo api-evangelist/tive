@@ -1,0 +1,236 @@
+{
+  "item": [
+    {
+      "id": "6d2396cb-edf8-4ace-b6cc-37dfc60ae840",
+      "name": "Alerts",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "138d3650-3424-4c30-a982-6c8df883ce0b",
+          "name": "List alert presets",
+          "request": {
+            "name": "List alert presets",
+            "description": {},
+            "url": {
+              "path": [
+                "alertPresets"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "disabled": false,
+                "description": "(Required) The Tive account ID. Required by most non-authentication endpoints.",
+                "key": "x-tive-account-id",
+                "value": "<string>"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "a54fe918-c9f2-4379-b13c-2dc43cc32807",
+              "name": "A list of alert presets.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "alertPresets"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) The Tive account ID. Required by most non-authentication endpoints.",
+                    "key": "x-tive-account-id",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"alertPresetId\": \"string\",\n    \"name\": \"string\",\n    \"triggers\": [\n      {\n        \"type\": \"string\",\n        \"threshold\": 8416.170196510906,\n        \"notify\": false\n      },\n      {\n        \"type\": \"string\",\n        \"threshold\": 470.55323988553386,\n        \"notify\": false\n      }\n    ]\n  },\n  {\n    \"alertPresetId\": \"string\",\n    \"name\": \"string\",\n    \"triggers\": [\n      {\n        \"type\": \"string\",\n        \"threshold\": 8153.148603292746,\n        \"notify\": false\n      },\n      {\n        \"type\": \"string\",\n        \"threshold\": 5808.825403920563,\n        \"notify\": true\n      }\n    ]\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "fc72d937-0e8a-48ac-92da-5d24f058f606",
+          "name": "Create an alert preset",
+          "request": {
+            "name": "Create an alert preset",
+            "description": {},
+            "url": {
+              "path": [
+                "alertPresets"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "disabled": false,
+                "description": "(Required) The Tive account ID. Required by most non-authentication endpoints.",
+                "key": "x-tive-account-id",
+                "value": "<string>"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"alertPresetId\": \"<string>\",\n  \"name\": \"<string>\",\n  \"triggers\": [\n    {\n      \"type\": \"<string>\",\n      \"threshold\": \"<number>\",\n      \"notify\": \"<boolean>\"\n    },\n    {\n      \"type\": \"<string>\",\n      \"threshold\": \"<number>\",\n      \"notify\": \"<boolean>\"\n    }\n  ]\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "4207f5b3-4f7c-403b-8086-4cb8fdce312b",
+              "name": "The created alert preset.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "alertPresets"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) The Tive account ID. Required by most non-authentication endpoints.",
+                    "key": "x-tive-account-id",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"alertPresetId\": \"<string>\",\n  \"name\": \"<string>\",\n  \"triggers\": [\n    {\n      \"type\": \"<string>\",\n      \"threshold\": \"<number>\",\n      \"notify\": \"<boolean>\"\n    },\n    {\n      \"type\": \"<string>\",\n      \"threshold\": \"<number>\",\n      \"notify\": \"<boolean>\"\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"alertPresetId\": \"<string>\",\n  \"name\": \"<string>\",\n  \"triggers\": [\n    {\n      \"type\": \"<string>\",\n      \"threshold\": \"<number>\",\n      \"notify\": \"<boolean>\"\n    },\n    {\n      \"type\": \"<string>\",\n      \"threshold\": \"<number>\",\n      \"notify\": \"<boolean>\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.tive.com/public/v3",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "bearer",
+    "bearer": [
+      {
+        "key": "token",
+        "value": "{{bearerToken}}"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "be8f6eac-b275-408d-9f13-830b709dff7d",
+    "name": "Tive Public Alerts API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "Specification of the Tive Public API (v3) for real-time supply-chain and shipment visibility. The API lets you create and track shipments, manage trackers (devices), retrieve sensor data (location, temperature, humidity, pressure, light, motion, battery), configure alert presets, and manage webhooks. This document models documented, real endpoints; it is intentionally a small-but-real subset and avoids fabricating undocumented surface area.\n\nContact Support:\n Name: Tive Support",
+      "type": "text/plain"
+    }
+  }
+}

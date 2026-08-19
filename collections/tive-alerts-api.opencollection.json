@@ -1,0 +1,62 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Tive Public Alerts API",
+    "version": "3.0"
+  },
+  "request": {
+    "auth": {
+      "type": "bearer",
+      "token": "{{bearerToken}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Alerts",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List alert presets",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.tive.com/public/v3/alertPresets",
+            "headers": [
+              {
+                "name": "x-tive-account-id",
+                "value": ""
+              }
+            ]
+          },
+          "docs": "List alert presets"
+        },
+        {
+          "info": {
+            "name": "Create an alert preset",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.tive.com/public/v3/alertPresets",
+            "headers": [
+              {
+                "name": "x-tive-account-id",
+                "value": ""
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Create an alert preset"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

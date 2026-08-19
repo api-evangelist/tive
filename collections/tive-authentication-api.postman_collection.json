@@ -1,0 +1,247 @@
+{
+  "item": [
+    {
+      "id": "fb295c3c-10fa-4595-9206-d3c00784d386",
+      "name": "Authentication",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "7450d3df-993f-4936-999d-4d7db2c7ac7e",
+          "name": "Obtain a bearer token",
+          "request": {
+            "name": "Obtain a bearer token",
+            "description": {
+              "content": "Exchange client credentials for a short-lived bearer token. Tokens currently have a lifetime of one hour (3600 seconds).",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "authenticate"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "multipart/form-data"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "formdata",
+              "formdata": [
+                {
+                  "key": "client_id",
+                  "value": "<string>",
+                  "type": "text",
+                  "description": "(Required) Your application's public identifier."
+                },
+                {
+                  "key": "client_secret",
+                  "value": "<string>",
+                  "type": "text",
+                  "description": "(Required) Your confidential application secret."
+                },
+                {
+                  "key": "grant_type",
+                  "value": "<string>",
+                  "type": "text",
+                  "description": "(Required)  (This can only be one of client_credentials)"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "cf9e1aba-c4ec-403c-a532-97b17180adf5",
+              "name": "A bearer token.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "authenticate"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "formdata",
+                  "formdata": [
+                    {
+                      "description": {
+                        "content": "(Required) Your application's public identifier.",
+                        "type": "text/plain"
+                      },
+                      "key": "client_id",
+                      "value": "<string>",
+                      "type": "text"
+                    },
+                    {
+                      "description": {
+                        "content": "(Required) Your confidential application secret.",
+                        "type": "text/plain"
+                      },
+                      "key": "client_secret",
+                      "value": "<string>",
+                      "type": "text"
+                    },
+                    {
+                      "description": {
+                        "content": "(Required)  (This can only be one of client_credentials)",
+                        "type": "text/plain"
+                      },
+                      "key": "grant_type",
+                      "value": "<string>",
+                      "type": "text"
+                    }
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"token\": \"string\",\n  \"token_type\": \"Bearer\",\n  \"expires\": 2223\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "a48de6c3-8f41-4d9f-b8b5-a23059853bd2",
+              "name": "Invalid credentials.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "authenticate"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "formdata",
+                  "formdata": [
+                    {
+                      "description": {
+                        "content": "(Required) Your application's public identifier.",
+                        "type": "text/plain"
+                      },
+                      "key": "client_id",
+                      "value": "<string>",
+                      "type": "text"
+                    },
+                    {
+                      "description": {
+                        "content": "(Required) Your confidential application secret.",
+                        "type": "text/plain"
+                      },
+                      "key": "client_secret",
+                      "value": "<string>",
+                      "type": "text"
+                    },
+                    {
+                      "description": {
+                        "content": "(Required)  (This can only be one of client_credentials)",
+                        "type": "text/plain"
+                      },
+                      "key": "grant_type",
+                      "value": "<string>",
+                      "type": "text"
+                    }
+                  ]
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.tive.com/public/v3",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "bearer",
+    "bearer": [
+      {
+        "key": "token",
+        "value": "{{bearerToken}}"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "7e8261c5-42e1-4603-8097-b8857a94e96f",
+    "name": "Tive Public Alerts Authentication API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "Specification of the Tive Public API (v3) for real-time supply-chain and shipment visibility. The API lets you create and track shipments, manage trackers (devices), retrieve sensor data (location, temperature, humidity, pressure, light, motion, battery), configure alert presets, and manage webhooks. This document models documented, real endpoints; it is intentionally a small-but-real subset and avoids fabricating undocumented surface area.\n\nContact Support:\n Name: Tive Support",
+      "type": "text/plain"
+    }
+  }
+}
