@@ -27,6 +27,13 @@ tags:
 - Logistics
 - IoT
 - Trackers
+- Real-Time
+tags_raw:
+- Supply Chain
+- Shipment Visibility
+- Logistics
+- IoT
+- Trackers
 - Real Time
 created: '2026-06-21'
 modified: '2026-06-21'
@@ -158,6 +165,8 @@ apis:
   humanURL: https://developers.tive.com/docs/create-a-shipment
   baseURL: https://api.tive.com/public/v3
   tags:
+  - Webhook
+  tags_raw:
   - Webhooks
   properties:
   - type: OpenAPI
