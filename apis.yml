@@ -7,6 +7,18 @@ description: Tive is a real-time supply-chain and shipment visibility platform b
   and track shipments, manage trackers/devices, pull sensor data (location, temperature,
   humidity, pressure, light, motion, battery), configure alert presets, and subscribe
   to webhooks for push event delivery.
+deliveryModel:
+  model: saas
+  open_source: false
+  commercial: true
+  callable_host: true
+  label: Hosted service · you call their endpoint
+  confidence: high
+  source:
+  - openapi
+  - pricing
+  generated: '2026-08-28'
+  method: derived
 accessModel:
   pricing: enterprise
   onboarding: self-serve
