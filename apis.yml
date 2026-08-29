@@ -198,6 +198,9 @@ apis:
   - type: Documentation
     url: https://developers.tive.com/docs/creating-webhooks
 common:
+- type: CapabilityMap
+  url: capabilities/tive-capability-edges.yml
+  name: Tive Business Capability Map
 - type: AgenticAccess
   url: agentic-access/tive-agentic-access.yml
 - type: DomainSecurity

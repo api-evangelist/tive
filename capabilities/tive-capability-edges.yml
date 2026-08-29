@@ -1,0 +1,45 @@
+slug: tive
+provider: Tive
+generated_by: planning/capability-mapping/scripts/classify_capabilities.py
+model: claude-opus-5
+frame:
+- Transportation & Logistics
+min_confidence: 0.7
+capability_model:
+  source: https://github.com/vincentmakes/turbo-ea-capabilities
+  license: CC-BY-4.0
+  attribution: Turbo EA Capabilities by Vincent Verdet — Turbo EA, https://github.com/vincentmakes/turbo-ea-capabilities,
+    CC BY 4.0
+  notice: NOTICE
+edge_count: 3
+edges:
+- tag: Alerts
+  spec_file: tive-alerts-api-openapi.yml
+  capability_id: BC-2510.40
+  capability_id_l1: BC-2510
+  capability_name: Exception and Alert Management
+  confidence: 0.8
+  evidence: POST /alertPresets  createAlertPreset  Create an alert preset; schemas AlertTrigger, AlertPreset
+  reason: On a shipment-visibility platform, alert presets define triggers (e.g. temperature/location
+    excursions) that notify stakeholders of in-transit exceptions — exception and alert management within
+    shipment visibility, not financial-crime or IT alerting.
+- tag: Sensor Data
+  spec_file: tive-sensor-data-api-openapi.yml
+  capability_id: BC-2510.10
+  capability_id_l1: BC-2510
+  capability_name: Event Capture and Status Management
+  confidence: 0.8
+  evidence: GET /shipments/{shipmentId}/trackerData  getShipmentTrackerData  Get shipment tracker data;
+    schemas Coordinates, SensorReading
+  reason: Retrieval of location and condition sensor readings tied to a shipment is capture of shipment
+    events from IoT devices feeding canonical shipment status.
+- tag: Shipments
+  spec_file: tive-shipments-api-openapi.yml
+  capability_id: BC-2510.20
+  capability_id_l1: BC-2510
+  capability_name: Shipment Tracking Management
+  confidence: 0.8
+  evidence: POST /shipments  createShipment  Create a shipment; PATCH /shipments/{shipmentId}/start  startShipment;
+    schemas ShipmentLeg, Shipment
+  reason: Create, update and start shipments with legs on a 'real-time supply-chain and shipment visibility
+    platform' — the shipment record whose status is resolved across legs and surfaced to customers.
