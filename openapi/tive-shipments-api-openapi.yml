@@ -1,6 +1,6 @@
-openapi: 3.0.1
+openapi: 3.2.0
 info:
-  title: Tive Public Alerts Shipments API
+  title: Tive Public Shipments API
   description: Specification of the Tive Public API (v3) for real-time supply-chain and shipment visibility. The API lets you create and track shipments, manage trackers (devices), retrieve sensor data (location, temperature, humidity, pressure, light, motion, battery), configure alert presets, and manage webhooks. This document models documented, real endpoints; it is intentionally a small-but-real subset and avoids fabricating undocumented surface area.
   termsOfService: https://www.tive.com/terms
   contact:
@@ -116,6 +116,31 @@ components:
         longitude:
           type: number
           format: double
+    ShipmentLeg:
+      type: object
+      properties:
+        mode:
+          type: string
+          enum:
+          - Road
+          - Air
+          - Ocean
+          - Rail
+        fromAddress:
+          type: string
+        toAddress:
+          type: string
+        fromLocationId:
+          type: string
+        toLocationId:
+          type: string
+        fromCoordinates:
+          $ref: '#/components/schemas/Coordinates'
+        toCoordinates:
+          $ref: '#/components/schemas/Coordinates'
+        shipFromDate:
+          type: string
+          format: date-time
     Shipment:
       type: object
       properties:
@@ -142,31 +167,6 @@ components:
           type: array
           items:
             type: string
-    ShipmentLeg:
-      type: object
-      properties:
-        mode:
-          type: string
-          enum:
-          - Road
-          - Air
-          - Ocean
-          - Rail
-        fromAddress:
-          type: string
-        toAddress:
-          type: string
-        fromLocationId:
-          type: string
-        toLocationId:
-          type: string
-        fromCoordinates:
-          $ref: '#/components/schemas/Coordinates'
-        toCoordinates:
-          $ref: '#/components/schemas/Coordinates'
-        shipFromDate:
-          type: string
-          format: date-time
   parameters:
     ShipmentIdPath:
       name: shipmentId

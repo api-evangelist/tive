@@ -1,6 +1,6 @@
-openapi: 3.0.1
+openapi: 3.2.0
 info:
-  title: Tive Public Alerts Devices API
+  title: Tive Public Devices API
   description: Specification of the Tive Public API (v3) for real-time supply-chain and shipment visibility. The API lets you create and track shipments, manage trackers (devices), retrieve sensor data (location, temperature, humidity, pressure, light, motion, battery), configure alert presets, and manage webhooks. This document models documented, real endpoints; it is intentionally a small-but-real subset and avoids fabricating undocumented surface area.
   termsOfService: https://www.tive.com/terms
   contact:
@@ -56,14 +56,6 @@ paths:
               schema:
                 $ref: '#/components/schemas/Device'
 components:
-  parameters:
-    AccountIdHeader:
-      name: x-tive-account-id
-      in: header
-      required: true
-      schema:
-        type: string
-      description: The Tive account ID. Required by most non-authentication endpoints.
   schemas:
     Device:
       type: object
@@ -99,6 +91,14 @@ components:
           type: array
           items:
             type: string
+  parameters:
+    AccountIdHeader:
+      name: x-tive-account-id
+      in: header
+      required: true
+      schema:
+        type: string
+      description: The Tive account ID. Required by most non-authentication endpoints.
   securitySchemes:
     bearerAuth:
       type: http

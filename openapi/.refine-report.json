@@ -1,12 +1,7 @@
 {
   "provider": "tive",
   "sources": [
-    "tive-alerts-api-openapi.yml",
-    "tive-authentication-api-openapi.yml",
-    "tive-devices-api-openapi.yml",
-    "tive-sensor-data-api-openapi.yml",
-    "tive-shipments-api-openapi.yml",
-    "tive-webhooks-api-openapi.yml"
+    "_original/tive-openapi.yml"
   ],
   "outputs": [
     "tive-alerts-api-openapi.yml",
@@ -19,6 +14,23 @@
   "archived": [],
   "errors": [],
   "warnings": [],
-  "notes": [],
-  "skipped": []
+  "notes": [
+    "sourced from openapi/_original/ (1 archived document(s)); previously refined output at the top level was skipped rather than re-split",
+    "tive-openapi.yml: upgraded openapi 3.0.1 -> OpenAPI 3.2.0",
+    "tive-openapi.yml: declared missing tag: Alerts",
+    "tive-openapi.yml: declared missing tag: Authentication",
+    "tive-openapi.yml: declared missing tag: Devices",
+    "tive-openapi.yml: declared missing tag: Sensor Data",
+    "tive-openapi.yml: declared missing tag: Shipments",
+    "tive-openapi.yml: declared missing tag: Webhooks",
+    "apis.yml register: already-registered"
+  ],
+  "skipped": [
+    "tive-alerts-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "tive-authentication-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "tive-devices-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "tive-sensor-data-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "tive-shipments-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "tive-webhooks-api-openapi.yml: previously refined output, superseded by openapi/_original/"
+  ]
 }

@@ -1,6 +1,6 @@
-openapi: 3.0.1
+openapi: 3.2.0
 info:
-  title: Tive Public Alerts Sensor Data API
+  title: Tive Public Sensor Data API
   description: Specification of the Tive Public API (v3) for real-time supply-chain and shipment visibility. The API lets you create and track shipments, manage trackers (devices), retrieve sensor data (location, temperature, humidity, pressure, light, motion, battery), configure alert presets, and manage webhooks. This document models documented, real endpoints; it is intentionally a small-but-real subset and avoids fabricating undocumented surface area.
   termsOfService: https://www.tive.com/terms
   contact:
@@ -49,7 +49,31 @@ paths:
                 items:
                   $ref: '#/components/schemas/SensorReading'
 components:
+  parameters:
+    ShipmentIdPath:
+      name: shipmentId
+      in: path
+      required: true
+      schema:
+        type: string
+      description: The public shipment identifier.
+    AccountIdHeader:
+      name: x-tive-account-id
+      in: header
+      required: true
+      schema:
+        type: string
+      description: The Tive account ID. Required by most non-authentication endpoints.
   schemas:
+    Coordinates:
+      type: object
+      properties:
+        latitude:
+          type: number
+          format: double
+        longitude:
+          type: number
+          format: double
     SensorReading:
       type: object
       properties:
@@ -70,30 +94,6 @@ components:
           type: number
         battery:
           type: number
-    Coordinates:
-      type: object
-      properties:
-        latitude:
-          type: number
-          format: double
-        longitude:
-          type: number
-          format: double
-  parameters:
-    ShipmentIdPath:
-      name: shipmentId
-      in: path
-      required: true
-      schema:
-        type: string
-      description: The public shipment identifier.
-    AccountIdHeader:
-      name: x-tive-account-id
-      in: header
-      required: true
-      schema:
-        type: string
-      description: The Tive account ID. Required by most non-authentication endpoints.
   securitySchemes:
     bearerAuth:
       type: http

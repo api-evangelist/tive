@@ -1,6 +1,6 @@
-openapi: 3.0.1
+openapi: 3.2.0
 info:
-  title: Tive Public Alerts Authentication API
+  title: Tive Public Authentication API
   description: Specification of the Tive Public API (v3) for real-time supply-chain and shipment visibility. The API lets you create and track shipments, manage trackers (devices), retrieve sensor data (location, temperature, humidity, pressure, light, motion, battery), configure alert presets, and manage webhooks. This document models documented, real endpoints; it is intentionally a small-but-real subset and avoids fabricating undocumented surface area.
   termsOfService: https://www.tive.com/terms
   contact:
@@ -40,6 +40,18 @@ paths:
           description: Invalid credentials.
 components:
   schemas:
+    AuthenticateResponse:
+      type: object
+      properties:
+        token:
+          type: string
+          description: The bearer token to use on subsequent requests.
+        token_type:
+          type: string
+          example: Bearer
+        expires:
+          type: integer
+          description: Token lifetime in seconds (currently 3600).
     AuthenticateRequest:
       type: object
       required:
@@ -57,18 +69,6 @@ components:
           type: string
           enum:
           - client_credentials
-    AuthenticateResponse:
-      type: object
-      properties:
-        token:
-          type: string
-          description: The bearer token to use on subsequent requests.
-        token_type:
-          type: string
-          example: Bearer
-        expires:
-          type: integer
-          description: Token lifetime in seconds (currently 3600).
   securitySchemes:
     bearerAuth:
       type: http
