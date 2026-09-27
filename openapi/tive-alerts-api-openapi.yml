@@ -54,17 +54,6 @@ paths:
                 $ref: '#/components/schemas/AlertPreset'
 components:
   schemas:
-    AlertPreset:
-      type: object
-      properties:
-        alertPresetId:
-          type: string
-        name:
-          type: string
-        triggers:
-          type: array
-          items:
-            $ref: '#/components/schemas/AlertTrigger'
     AlertTrigger:
       type: object
       properties:
@@ -76,6 +65,17 @@ components:
         notify:
           type: boolean
           description: Whether the trigger should send notifications.
+    AlertPreset:
+      type: object
+      properties:
+        alertPresetId:
+          type: string
+        name:
+          type: string
+        triggers:
+          type: array
+          items:
+            $ref: '#/components/schemas/AlertTrigger'
   parameters:
     AccountIdHeader:
       name: x-tive-account-id
