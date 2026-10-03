@@ -56,6 +56,14 @@ paths:
               schema:
                 $ref: '#/components/schemas/Device'
 components:
+  parameters:
+    AccountIdHeader:
+      name: x-tive-account-id
+      in: header
+      required: true
+      schema:
+        type: string
+      description: The Tive account ID. Required by most non-authentication endpoints.
   schemas:
     Device:
       type: object
@@ -91,14 +99,6 @@ components:
           type: array
           items:
             type: string
-  parameters:
-    AccountIdHeader:
-      name: x-tive-account-id
-      in: header
-      required: true
-      schema:
-        type: string
-      description: The Tive account ID. Required by most non-authentication endpoints.
   securitySchemes:
     bearerAuth:
       type: http

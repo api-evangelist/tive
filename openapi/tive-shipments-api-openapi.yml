@@ -106,32 +106,22 @@ paths:
               schema:
                 $ref: '#/components/schemas/Shipment'
 components:
+  parameters:
+    ShipmentIdPath:
+      name: shipmentId
+      in: path
+      required: true
+      schema:
+        type: string
+      description: The public shipment identifier.
+    AccountIdHeader:
+      name: x-tive-account-id
+      in: header
+      required: true
+      schema:
+        type: string
+      description: The Tive account ID. Required by most non-authentication endpoints.
   schemas:
-    ShipmentLeg:
-      type: object
-      properties:
-        mode:
-          type: string
-          enum:
-          - Road
-          - Air
-          - Ocean
-          - Rail
-        fromAddress:
-          type: string
-        toAddress:
-          type: string
-        fromLocationId:
-          type: string
-        toLocationId:
-          type: string
-        fromCoordinates:
-          $ref: '#/components/schemas/Coordinates'
-        toCoordinates:
-          $ref: '#/components/schemas/Coordinates'
-        shipFromDate:
-          type: string
-          format: date-time
     Shipment:
       type: object
       properties:
@@ -158,6 +148,31 @@ components:
           type: array
           items:
             type: string
+    ShipmentLeg:
+      type: object
+      properties:
+        mode:
+          type: string
+          enum:
+          - Road
+          - Air
+          - Ocean
+          - Rail
+        fromAddress:
+          type: string
+        toAddress:
+          type: string
+        fromLocationId:
+          type: string
+        toLocationId:
+          type: string
+        fromCoordinates:
+          $ref: '#/components/schemas/Coordinates'
+        toCoordinates:
+          $ref: '#/components/schemas/Coordinates'
+        shipFromDate:
+          type: string
+          format: date-time
     Coordinates:
       type: object
       properties:
@@ -167,21 +182,6 @@ components:
         longitude:
           type: number
           format: double
-  parameters:
-    AccountIdHeader:
-      name: x-tive-account-id
-      in: header
-      required: true
-      schema:
-        type: string
-      description: The Tive account ID. Required by most non-authentication endpoints.
-    ShipmentIdPath:
-      name: shipmentId
-      in: path
-      required: true
-      schema:
-        type: string
-      description: The public shipment identifier.
   securitySchemes:
     bearerAuth:
       type: http

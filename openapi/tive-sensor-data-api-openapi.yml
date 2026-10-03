@@ -50,15 +50,6 @@ paths:
                   $ref: '#/components/schemas/SensorReading'
 components:
   schemas:
-    Coordinates:
-      type: object
-      properties:
-        latitude:
-          type: number
-          format: double
-        longitude:
-          type: number
-          format: double
     SensorReading:
       type: object
       properties:
@@ -79,6 +70,15 @@ components:
           type: number
         battery:
           type: number
+    Coordinates:
+      type: object
+      properties:
+        latitude:
+          type: number
+          format: double
+        longitude:
+          type: number
+          format: double
   parameters:
     ShipmentIdPath:
       name: shipmentId
