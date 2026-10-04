@@ -106,22 +106,16 @@ paths:
               schema:
                 $ref: '#/components/schemas/Shipment'
 components:
-  parameters:
-    ShipmentIdPath:
-      name: shipmentId
-      in: path
-      required: true
-      schema:
-        type: string
-      description: The public shipment identifier.
-    AccountIdHeader:
-      name: x-tive-account-id
-      in: header
-      required: true
-      schema:
-        type: string
-      description: The Tive account ID. Required by most non-authentication endpoints.
   schemas:
+    Coordinates:
+      type: object
+      properties:
+        latitude:
+          type: number
+          format: double
+        longitude:
+          type: number
+          format: double
     Shipment:
       type: object
       properties:
@@ -173,15 +167,21 @@ components:
         shipFromDate:
           type: string
           format: date-time
-    Coordinates:
-      type: object
-      properties:
-        latitude:
-          type: number
-          format: double
-        longitude:
-          type: number
-          format: double
+  parameters:
+    ShipmentIdPath:
+      name: shipmentId
+      in: path
+      required: true
+      schema:
+        type: string
+      description: The public shipment identifier.
+    AccountIdHeader:
+      name: x-tive-account-id
+      in: header
+      required: true
+      schema:
+        type: string
+      description: The Tive account ID. Required by most non-authentication endpoints.
   securitySchemes:
     bearerAuth:
       type: http

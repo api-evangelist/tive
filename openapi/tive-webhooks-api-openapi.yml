@@ -89,14 +89,6 @@ paths:
         '204':
           description: The webhook was deleted.
 components:
-  parameters:
-    AccountIdHeader:
-      name: x-tive-account-id
-      in: header
-      required: true
-      schema:
-        type: string
-      description: The Tive account ID. Required by most non-authentication endpoints.
   schemas:
     Webhook:
       type: object
@@ -124,6 +116,14 @@ components:
           type: array
           items:
             type: string
+  parameters:
+    AccountIdHeader:
+      name: x-tive-account-id
+      in: header
+      required: true
+      schema:
+        type: string
+      description: The Tive account ID. Required by most non-authentication endpoints.
   securitySchemes:
     bearerAuth:
       type: http
