@@ -27,5 +27,5 @@
     - connectors/applications/tive
     vendor_link: https://www.tive.com/
     builder: Fivetran
-  status: pending-generation
+  status: not-a-workflow
   arazzo: null
