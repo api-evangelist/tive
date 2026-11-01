@@ -1,4 +1,4 @@
-# Tive (tive)
+# Tive
 
 <!-- API-EVANGELIST-PROVENANCE:BEGIN -->
 > ### About this repository
@@ -66,139 +66,125 @@
 
 Tive is a real-time supply-chain and shipment visibility platform built on cellular IoT trackers. The Tive Public API (v3) lets you programmatically create and track shipments, manage trackers/devices, pull sensor data (location, temperature, humidity, pressure, light, motion, battery), configure alert presets, and subscribe to webhooks for push event delivery.
 
-**APIs.json:** [https://raw.githubusercontent.com/api-evangelist/tive/refs/heads/main/apis.yml](https://raw.githubusercontent.com/api-evangelist/tive/refs/heads/main/apis.yml)
+**Areas:** Supply Chain · Shipment Visibility · Logistics · IoT · Trackers · Real-Time
 
-## Tags
+## Tive on APIs.io
 
-- Supply Chain
-- Shipment Visibility
-- Logistics
-- IoT
-- Trackers
-- Real Time
+Everything profiled for Tive is published on APIs.io rather than in this repository. Start at the provider page — **[apis.io/providers/tive/](https://apis.io/providers/tive/)** — or go straight to one of the APIs or properties below.
 
-## Timestamps
+### APIs (6)
 
-- **Created:** 2026-06-21
-- **Modified:** 2026-06-21
+- [Tive Alerts API](https://apis.io/apis/tive/tive-alerts-api/) — The Alerts API from Tive — 1 operation(s) for alerts.
+- [Tive Authentication API](https://apis.io/apis/tive/tive-authentication-api/) — The Authentication API from Tive — 1 operation(s) for authentication.
+- [Tive Devices API](https://apis.io/apis/tive/tive-devices-api/) — The Devices API from Tive — 2 operation(s) for devices.
+- [Tive Sensor Data API](https://apis.io/apis/tive/tive-sensor-data-api/) — The Sensor Data API from Tive — 1 operation(s) for sensor data.
+- [Tive Shipments API](https://apis.io/apis/tive/tive-shipments-api/) — The Shipments API from Tive — 3 operation(s) for shipments.
+- [Tive Webhooks API](https://apis.io/apis/tive/tive-webhooks-api/) — The Webhooks API from Tive — 2 operation(s) for webhooks.
 
-## APIs
+### Published properties
 
-### Tive Shipments API
+Each property below is a page on APIs.io carrying the machine-readable artifact and what it says.
 
-Create, list, retrieve, update, start, and complete multi-leg shipments (Road, Air, Ocean, Rail) and sync them with existing applications.
+#### Agentic access (1)
 
-- **Human URL:** [https://developers.tive.com/docs/create-a-shipment](https://developers.tive.com/docs/create-a-shipment)
-- **Base URL:** `https://api.tive.com/public/v3`
+Which operations an agent can call, which act, and which need a human in the loop.
 
-#### Tags
+- [Tive Agentic Access](https://apis.io/agentic-access/tive/tive-agentic-access/)
 
-- Shipments
-- Logistics
-- Tracking
+#### Collections (7)
 
-#### Properties
+Postman and Open Collection request collections.
 
-- [Documentation](https://developers.tive.com/docs/create-a-shipment)
-- [API Reference](https://developers.tive.com/reference/overview)
-- [OpenAPI](openapi/tive-openapi.yml) — [OpenAPI Specification](https://spec.openapis.org/oas/latest.html)
-- [Postman Collection](collections/tive.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/tive.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
+- [Tive Public API](https://apis.io/collections/tive/open-tive/)
+- [Tive Public Alerts API](https://apis.io/collections/tive/open-tive-alerts-api/)
+- [Tive Public Alerts Authentication API](https://apis.io/collections/tive/open-tive-authentication-api/)
+- [Tive Public Alerts Devices API](https://apis.io/collections/tive/open-tive-devices-api/)
+- [Tive Public Alerts Sensor Data API](https://apis.io/collections/tive/open-tive-sensor-data-api/)
+- [Tive Public Alerts Shipments API](https://apis.io/collections/tive/open-tive-shipments-api/)
+- [Tive Public Alerts Webhooks API](https://apis.io/collections/tive/open-tive-webhooks-api/)
 
-### Tive Trackers / Devices API
+#### Security (2)
 
-List and retrieve Tive trackers (devices) by deviceId (IMEI) or name, including battery, GPS/WiFi state, and measurement/transmission interval settings.
+Authentication, trust centre, and vulnerability disclosure.
 
-- **Human URL:** [https://developers.tive.com/docs/devices](https://developers.tive.com/docs/devices)
-- **Base URL:** `https://api.tive.com/public/v3`
+- [Tive Authentication](https://apis.io/security/tive/tive-authentication/)
+- [Tive Domain Security](https://apis.io/security/tive/tive-domain-security/)
 
-#### Tags
+#### Plans and pricing (1)
 
-- Devices
-- Trackers
-- IoT
+Published plans, tiers and prices.
 
-#### Properties
+- [Tive Plans Pricing](https://apis.io/plans/tive/tive-plans-pricing/)
 
-- [Documentation](https://developers.tive.com/docs/devices)
-- [API Reference](https://developers.tive.com/reference/overview)
-- [OpenAPI](openapi/tive-openapi.yml) — [OpenAPI Specification](https://spec.openapis.org/oas/latest.html)
-- [Postman Collection](collections/tive.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/tive.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
+#### Rate limits (1)
 
-### Tive Sensor Data API
+Published request limits.
 
-Retrieve a shipment's tracker sensor data - location, temperature, humidity, pressure, light, motion, and battery - optionally narrowed by a UTC start/end range.
+- [Tive Rate Limits](https://apis.io/rate-limits/tive/tive-rate-limits/)
 
-- **Human URL:** [https://developers.tive.com/docs/shipment-data](https://developers.tive.com/docs/shipment-data)
-- **Base URL:** `https://api.tive.com/public/v3`
+#### FinOps (1)
 
-#### Tags
+What the API costs to run, by operation.
 
-- Sensor Data
-- Telemetry
-- Location
+- [Tive Finops](https://apis.io/finops/tive/tive-finops/)
 
-#### Properties
+## Where to find this API
 
-- [Documentation](https://developers.tive.com/docs/shipment-data)
-- [API Reference](https://developers.tive.com/reference/overview)
-- [OpenAPI](openapi/tive-openapi.yml) — [OpenAPI Specification](https://spec.openapis.org/oas/latest.html)
-- [Postman Collection](collections/tive.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/tive.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
+Links to the company's own pages. This repository publishes no copy of their specifications — the canonical document is theirs and lives at the URLs below.
 
-### Tive Alerts API
-
-Create, list, retrieve, and update alert presets - configurable triggers (e.g. high temperature, light detection) attached to shipments and trackers.
-
-- **Human URL:** [https://developers.tive.com/docs/alert-presets](https://developers.tive.com/docs/alert-presets)
-- **Base URL:** `https://api.tive.com/public/v3`
-
-#### Tags
-
-- Alerts
-- Alert Presets
-- Monitoring
-
-#### Properties
-
-- [Documentation](https://developers.tive.com/docs/alert-presets)
-- [API Reference](https://developers.tive.com/reference/overview)
-- [OpenAPI](openapi/tive-openapi.yml) — [OpenAPI Specification](https://spec.openapis.org/oas/latest.html)
-- [Postman Collection](collections/tive.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/tive.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-
-### Tive Webhooks API
-
-Manage account-level webhooks that push device measurement and alert events to an HTTPS endpoint, scoped to all trackers, shipments, or alert presets.
-
-- **Human URL:** [https://developers.tive.com/docs/webhooks](https://developers.tive.com/docs/webhooks)
-- **Base URL:** `https://api.tive.com/public/v3`
-
-#### Tags
-
-- Webhooks
-- Events
-- Push
-
-#### Properties
-
-- [Documentation](https://developers.tive.com/docs/webhooks)
-- [Documentation](https://developers.tive.com/docs/creating-webhooks)
-- [OpenAPI](openapi/tive-openapi.yml) — [OpenAPI Specification](https://spec.openapis.org/oas/latest.html)
-- [Postman Collection](collections/tive.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/tive.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-
-## Common Properties
-
-- [LinkedIn](https://www.linkedin.com/company/tive-inc-)
 - [Website](https://www.tive.com)
 - [Documentation](https://developers.tive.com/docs)
-- [Plans](plans/tive-plans-pricing.yml)
-- [Rate Limits](rate-limits/tive-rate-limits.yml)
-- [Fin Ops](finops/tive-finops.yml)
+- [Blog](https://www.tive.com/blog)
 
-## Maintainers
+## API Evangelist rating
 
-**FN:** Kin Lane
-**Email:** kin@apievangelist.com
+**Kin Score 24.6** — emerging · rubric 0.24.0 · scored 2026-10-17
+
+| Facet | Score |
+|---|---|
+| Discoverability | 66.1 |
+| Contract quality | 46.3 |
+| Contract governance | 0.0 |
+| Operational transparency | 7.9 |
+| Developer ergonomics | 27.4 |
+| Access clarity | 5.3 |
+
+**Agent readiness 17.9** — agent-aware
+
+| Agent-readiness dimension | Result |
+|---|---|
+| Spec Presence | yes |
+| Agentic Access | derived (partial credit) |
+| Reversibility Documented | — |
+| MCP Server | — |
+| Auth Clarity | bearer (partial credit) |
+| Idempotency | — |
+| Error Semantics | — |
+| OpenAPI Examples | — |
+| Rate Limit Signal | derived (partial credit) |
+| Event Surface Described | — |
+| Agent Skills | — |
+| Well Known Catalog | — |
+| Consent Identity | — |
+| Agent Card | — |
+| Dry Run Mode | — |
+| Delegated Identity | — |
+| Protected Resource Metadata | — |
+| Dynamic Client Registration | — |
+| Agentic Commerce | — |
+
+**Regulatory alignment 11.8** — Horizontal (data, software, accessibility, platform)
+
+The rubric is published at [github.com/api-evangelist/kin-score](https://github.com/api-evangelist/kin-score). The per-check breakdown behind these numbers — which checks were earned, partial or missed — along with score history and how this provider compares to its peers, is available at [apis.io/providers/tive/](https://apis.io/providers/tive/).
+
+## How this profile is made
+
+API Evangelist profiles a company's public API surface the way a developer would find it: the website, developer portal and documentation, the specifications it publishes, its public repositories, and its pricing, status and changelog pages. From that it derives the properties above — contracts split per API, workflows, schemas, collections, governance rules, plans and rate limits — and scores them against the published [Kin Score rubric](https://github.com/api-evangelist/kin-score).
+
+The artifacts are published on [APIs.io](https://apis.io), not in this repository. This repository is the public record for Tive: the place to say something is wrong, missing or out of date, and to ask for a re-score or a removal.
+
+## Open an issue
+
+- **Something about this listing** — a wrong description, a missing API, a stale artifact or a question about the rating: [open an issue on this repository](https://github.com/api-evangelist/tive/issues/new).
+- **A new API, or one that is not in the catalog yet** — [submit it on APIs.io](https://apis.io/add/).
+- **Anything else** — [the APIs.io inbox](https://github.com/api-search/inbox/issues/new) or [info@apievangelist.com](mailto:info@apievangelist.com).
